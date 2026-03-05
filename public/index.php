@@ -6,6 +6,9 @@ require_once __DIR__ . '/../src/Model/Database.php';
 require_once __DIR__ . '/../src/Controller/HomeController.php';
 require_once __DIR__ . '/../src/Controller/AuthController.php';
 require_once __DIR__ . '/../src/Controller/AccountController.php';
+require_once __DIR__ . '/../src/Controller/BookController.php';
+
+
 
 $route = $_GET['route'] ?? 'home';
 
@@ -25,15 +28,20 @@ switch ($route) {
         $controller = new AuthController();
         $controller->login();
         break;
-    
+
     case 'account':
         $controller = new AccountController();
         $controller->index();
         break;
 
-        case 'logout':
+    case 'logout':
         $controller = new AuthController();
         $controller->logout();
+        break;
+
+    case 'create-book':
+        $controller = new BookController();
+        $controller->create();
         break;
 
     default:

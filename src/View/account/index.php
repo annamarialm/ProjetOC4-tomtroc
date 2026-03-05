@@ -6,6 +6,8 @@
 
 <h2>Ma bibliothèque</h2>
 
+<a href="?route=create-book">Ajouter un livre</a>
+
 <table border="1">
     <tr>
         <th>Titre</th>

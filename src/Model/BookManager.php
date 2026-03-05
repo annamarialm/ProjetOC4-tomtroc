@@ -20,4 +20,20 @@ class BookManager
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function createBook($userId, $title, $author, $description, $status)
+    {
+        $sql = "INSERT INTO books (user_id, title, author, description, status)
+            VALUES (:user_id, :title, :author, :description, :status)";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute([
+            'user_id' => $userId,
+            'title' => $title,
+            'author' => $author,
+            'description' => $description,
+            'status' => $status
+        ]);
+    }
 }
