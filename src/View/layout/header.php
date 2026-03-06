@@ -1,42 +1,64 @@
-<header>
+<!DOCTYPE html>
+<html lang="fr">
 
-<nav class="main-nav">
+<head>
+    <meta charset="UTF-8">
+    <title>Tom Troc</title>
 
-    <!-- LOGO -->
-    <div class="nav-logo">
-        <a href="?route=home">Tom Troc</a>
-    </div>
+    <link rel="stylesheet" href="/tomtroc/public/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
 
+<body>
 
-    <!-- MAIN NAVIGATION -->
-    <div class="nav-main">
+    <header>
 
-        <a href="?route=home">Accueil</a>
+        <div class="container">
 
-        <a href="?route=books">Nos livres à l’échange</a>
+            <nav class="main-nav">
 
-    </div>
+                <!-- LEFT NAVIGATION (logo + main menu) -->
+                <div class="nav-left">
 
+                    <!-- LOGO -->
+                    <div class="nav-logo">
+                        <a href="?route=home">
+                            <img src="/tomtroc/public/assets/logo.svg" alt="Tom Troc">
+                        </a>
+                    </div>
 
-    <!-- USER AREA -->
-    <div class="nav-user">
+                    <!-- MAIN NAVIGATION -->
+                    <div class="nav-main">
+                        <a href="?route=home" class="nav-active">Accueil</a>
+                        <a href="?route=books">Nos livres à l’échange</a>
+                    </div>
 
-        <a href="#">Messagerie</a>
+                </div>
 
-        <?php if (isset($_SESSION['user_id'])): ?>
+                <!-- USER AREA -->
+                <div class="nav-user">
 
-            <a href="?route=account">Mon compte</a>
+                    <a href="#" class="nav-link">
+                        <img src="/tomtroc/public/assets/icon-messagerie.svg" alt="" class="nav-icon">
+                        Messagerie
+                    </a>
+                    <?php if (isset($_SESSION['user_id'])): ?>
 
-            <a href="?route=logout">Déconnexion</a>
+                        <a href="?route=account" class="nav-link">
+                            <img src="/tomtroc/public/assets/icon-mon-compte.svg" alt="" class="nav-icon">
+                            Mon compte
+                        </a> <a href="?route=logout">Déconnexion</a>
 
-        <?php else: ?>
+                    <?php else: ?>
 
-            <a href="?route=login">Connexion</a>
+                        <a href="?route=login">Connexion</a>
 
-        <?php endif; ?>
+                    <?php endif; ?>
 
-    </div>
+                </div>
 
-</nav>
+            </nav>
 
-</header>
+        </div>
+
+    </header>

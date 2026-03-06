@@ -73,7 +73,7 @@ switch ($route) {
         break;
 
     default:
-    http_response_code(404);
-    require __DIR__ . '/../src/View/errors/404.php';
-    break;
+        http_response_code(404);
+        require __DIR__ . '/../src/View/errors/404.php';
+        break;
 }
