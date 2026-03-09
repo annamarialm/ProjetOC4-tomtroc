@@ -26,23 +26,62 @@ class UserManager
     }
 
     public function findByEmail($email)
-{
-    $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
+    {
+        $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
 
-    $stmt = $this->db->prepare($sql);
-    $stmt->execute(['email' => $email]);
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['email' => $email]);
 
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
-public function findById($id)
-{
-    $sql = "SELECT * FROM users WHERE id = :id LIMIT 1";
+    public function findById($id)
+    {
+        $sql = "SELECT * FROM users WHERE id = :id LIMIT 1";
 
-    $stmt = $this->db->prepare($sql);
-    $stmt->execute(['id' => $id]);
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['id' => $id]);
 
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
+    public function updateProfile($id, $email, $username, $password, $avatar)
+    {
+        if ($password) {
+            $password = password_hash($password, PASSWORD_DEFAULT);
+
+            $sql = "UPDATE users
+                SET email = :email,
+                    username = :username,
+                    password = :password,
+                    avatar = :avatar
+                WHERE id = :id";
+
+            $stmt = $this->db->prepare($sql);
+
+            $stmt->execute([
+                'email' => $email,
+                'username' => $username,
+                'password' => $password,
+                'avatar' => $avatar,
+                'id' => $id
+            ]);
+        } else {
+
+            $sql = "UPDATE users
+                SET email = :email,
+                    username = :username,
+                    avatar = :avatar
+                WHERE id = :id";
+
+            $stmt = $this->db->prepare($sql);
+
+            $stmt->execute([
+                'email' => $email,
+                'username' => $username,
+                'avatar' => $avatar,
+                'id' => $id
+            ]);
+        }
+    }
 }

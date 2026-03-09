@@ -2,7 +2,7 @@
 
 <h1>Ajouter un livre</h1>
 
-<form method="POST" action="?route=create-book">
+<form method="POST" action="?route=create-book" enctype="multipart/form-data">
 
     <label for="title">Titre</label>
     <input type="text" name="title" id="title" required>
@@ -18,6 +18,9 @@
         <option value="available">Disponible</option>
         <option value="unavailable">Indisponible</option>
     </select>
+
+    <label for="image">Image du livre</label>
+    <input type="file" name="image" id="image" accept="image/*">
 
     <button type="submit">Valider</button>
 

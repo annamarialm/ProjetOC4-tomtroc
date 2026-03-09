@@ -3,22 +3,40 @@
 
 <h1>Mon compte</h1>
 
+<form method="POST" action="?route=update-profile" enctype="multipart/form-data">
 
-<!-- TOP SECTION -->
 <div class="account-top">
 
     <!-- PROFILE CARD -->
     <div class="account-profile">
 
-        <img src="https://via.placeholder.com/120" alt="Photo de profil">
+        <?php
+        $avatar = !empty($user['avatar'])
+            ? $user['avatar']
+            : '/tomtroc/public/assets/avatars/default-avatar.jpg';
+        ?>
 
-        <p><a href="#">Modifier</a></p>
+        <img
+            src="<?= htmlspecialchars($avatar) ?>"
+            alt="Photo de profil"
+            class="profile-avatar">
+
+        <input
+            type="file"
+            name="avatar"
+            id="avatar-upload"
+            accept="image/*"
+            style="display:none;">
+
+        <label for="avatar-upload" class="avatar-edit-btn">
+            Modifier
+        </label>
 
         <h3><?= htmlspecialchars($user['username']) ?></h3>
 
         <p>Membre depuis <?= getMembershipDuration($user['created_at']) ?></p>
 
-        <h3>BIBLIOTHEQUE</h3>
+        <h3>BIBLIOTHÈQUE</h3>
 
         <p><?= count($books) ?> livres</p>
 
@@ -30,36 +48,34 @@
 
         <h2>Vos informations personnelles</h2>
 
-        <form method="POST" action="?route=update-profile">
+        <label for="email">Adresse email</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            value="<?= htmlspecialchars($user['email']) ?>">
 
-            <label for="email">Adresse email</label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                value="<?= htmlspecialchars($user['email']) ?>">
+        <label for="password">Mot de passe</label>
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="••••••••">
 
-            <label for="password">Mot de passe</label>
-            <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="••••••••">
+        <label for="username">Pseudo</label>
+        <input
+            type="text"
+            id="username"
+            name="username"
+            value="<?= htmlspecialchars($user['username']) ?>">
 
-            <label for="username">Pseudo</label>
-            <input
-                type="text"
-                id="username"
-                name="username"
-                value="<?= htmlspecialchars($user['username']) ?>">
-
-            <button type="submit">Enregistrer</button>
-
-        </form>
+        <button type="submit">Enregistrer</button>
 
     </div>
 
 </div>
+
+</form>
 
 
 <!-- BOOK LIBRARY -->

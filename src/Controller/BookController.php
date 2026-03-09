@@ -18,13 +18,29 @@ class BookController
             $description = $_POST['description'] ?? '';
             $status = $_POST['status'] ?? 'available';
 
+            $imagePath = null;
+
+            if (!empty($_FILES['image']['name'])) {
+
+                $uploadDir = __DIR__ . '/../../public/assets/books/';
+
+                $filename = uniqid() . '_' . basename($_FILES['image']['name']);
+
+                $targetPath = $uploadDir . $filename;
+
+                move_uploaded_file($_FILES['image']['tmp_name'], $targetPath);
+
+                $imagePath = '/tomtroc/public/assets/books/' . $filename;
+            }
+
             $bookManager = new BookManager();
             $bookManager->createBook(
                 $_SESSION['user_id'],
                 $title,
                 $author,
                 $description,
-                $status
+                $status,
+                $imagePath
             );
 
             header('Location: ?route=account');
@@ -57,7 +73,29 @@ class BookController
             $description = $_POST['description'] ?? '';
             $status = $_POST['status'] ?? 'available';
 
-            $bookManager->updateBook($id, $title, $author, $description, $status);
+            $imagePath = null;
+
+            if (!empty($_FILES['image']['name'])) {
+
+                $uploadDir = __DIR__ . '/../../public/assets/books/';
+
+                $filename = uniqid() . '_' . basename($_FILES['image']['name']);
+
+                $targetPath = $uploadDir . $filename;
+
+                move_uploaded_file($_FILES['image']['tmp_name'], $targetPath);
+
+                $imagePath = '/tomtroc/public/assets/books/' . $filename;
+            }
+
+            $bookManager->updateBook(
+                $id,
+                $title,
+                $author,
+                $description,
+                $status,
+                $imagePath
+            );
 
             header('Location: ?route=account');
             exit;

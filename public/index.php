@@ -8,7 +8,7 @@ require_once __DIR__ . '/../src/Controller/AuthController.php';
 require_once __DIR__ . '/../src/Controller/AccountController.php';
 require_once __DIR__ . '/../src/Controller/BookController.php';
 
-
+// Get the route from the URL (default to 'home' if none is provided)
 
 $route = $_GET['route'] ?? 'home';
 
@@ -70,6 +70,11 @@ switch ($route) {
         require_once __DIR__ . '/../src/Controller/UserProfileController.php';
         $controller = new UserProfileController();
         $controller->show();
+        break;
+
+    case 'update-profile':
+        $controller = new AccountController();
+        $controller->updateProfile();
         break;
 
     default:

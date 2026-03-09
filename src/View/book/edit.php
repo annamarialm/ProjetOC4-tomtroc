@@ -4,11 +4,25 @@
 
 <a href="?route=account">← retour</a>
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
 
     <div>
         <label>Photo</label>
-        <p>(Image non modifiable pour l’instant)</p>
+
+        <?php if (!empty($book['image'])): ?>
+            <div>
+                <img src="<?= htmlspecialchars($book['image']) ?>" alt="Couverture du livre" style="max-width:150px;">
+            </div>
+        <?php else: ?>
+            <div>
+                <img src="/tomtroc/public/assets/books/default.jpg" alt="Couverture du livre" style="max-width:150px;">
+            </div>
+        <?php endif; ?>
+
+        <p>Modifier l'image :</p>
+
+        <input type="file" name="image" accept="image/*">
+
     </div>
 
     <div>

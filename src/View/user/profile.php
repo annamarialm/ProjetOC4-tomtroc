@@ -6,17 +6,31 @@
     <!-- LEFT PROFILE CARD -->
     <div class="account-profile">
 
-        <img src="https://via.placeholder.com/120" alt="Photo de profil">
+        <?php
+        $avatar = !empty($user['avatar'])
+            ? $user['avatar']
+            : '/tomtroc/public/assets/avatars/default-avatar.jpg';
+        ?>
+
+        <img
+            src="<?= htmlspecialchars($avatar) ?>"
+            alt="Photo de profil"
+            class="profile-avatar">
 
         <h3><?= htmlspecialchars($user['username']) ?></h3>
 
-        <p>Membre depuis <?= getMembershipDuration($user['created_at']) ?></p>
+        <p>
+            Membre depuis
+            <?= getMembershipDuration($user['created_at']) ?>
+        </p>
 
-        <h3>BIBLIOTHEQUE</h3>
+        <h3>BIBLIOTHÈQUE</h3>
 
         <p><?= count($books) ?> livres</p>
 
-        <a href="#" class="message-button">Écrire un message</a>
+        <a href="#" class="message-button">
+            Écrire un message
+        </a>
 
     </div>
 
@@ -24,36 +38,48 @@
     <!-- RIGHT BOOK LIST -->
     <div class="account-books">
 
-        <table border="1">
+        <table class="books-table">
 
-            <tr>
-                <th>PHOTO</th>
-                <th>TITRE</th>
-                <th>AUTEUR</th>
-                <th>DESCRIPTION</th>
-            </tr>
-
-            <?php foreach ($books as $book): ?>
-
+            <thead>
                 <tr>
-
-                    <td>
-                        <?php if ($book['image']): ?>
-                            <img src="<?= htmlspecialchars($book['image']) ?>" width="60">
-                        <?php else: ?>
-                            —
-                        <?php endif; ?>
-                    </td>
-
-                    <td><?= htmlspecialchars($book['title']) ?></td>
-
-                    <td><?= htmlspecialchars($book['author']) ?></td>
-
-                    <td><?= htmlspecialchars($book['description']) ?></td>
-
+                    <th>PHOTO</th>
+                    <th>TITRE</th>
+                    <th>AUTEUR</th>
+                    <th>DESCRIPTION</th>
                 </tr>
+            </thead>
 
-            <?php endforeach; ?>
+            <tbody>
+
+                <?php foreach ($books as $book): ?>
+
+                    <tr>
+
+                        <td class="book-cover">
+
+                            <?php
+                            $image = !empty($book['image'])
+                                ? $book['image']
+                                : '/tomtroc/public/assets/books/default.jpg';
+                            ?>
+
+                            <img
+                                src="<?= htmlspecialchars($image) ?>"
+                                alt="Couverture">
+
+                        </td>
+
+                        <td><?= htmlspecialchars($book['title']) ?></td>
+
+                        <td><?= htmlspecialchars($book['author']) ?></td>
+
+                        <td><?= htmlspecialchars($book['description']) ?></td>
+
+                    </tr>
+
+                <?php endforeach; ?>
+
+            </tbody>
 
         </table>
 
