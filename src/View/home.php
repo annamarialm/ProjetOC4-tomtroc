@@ -81,50 +81,53 @@
             <a href="?route=books" class="btn-secondary">Voir tous les livres</a>
 
         </div>
-        
+
 
     </section>
 
     <div class="container">
 
-        
-        <h2>Comment ça marche ?</h2>
+
+        <h2 class="how-title">Comment ça marche ?</h2>
+
+        <p class="how-intro">
+            Échanger des livres avec TomTroc c’est simple et amusant !
+            Suivez ces étapes pour commencer :
+        </p>
 
         <div class="how-it-works">
 
             <a href="?route=register" class="card-link card">
-                <h3>Inscrivez-vous gratuitement</h3>
-                <p>Créez votre compte pour rejoindre la communauté.</p>
+
+                <p>Inscrivez-vous gratuitement sur notre plateforme.</p>
             </a>
 
             <a href="?route=create-book" class="card-link card">
-                <h3>Ajoutez les livres</h3>
-                <p>Ajoutez les livres que vous souhaitez échanger.</p>
+                <p>Ajoutez les livres que vous souhaitez échanger à votre profil.</p>
             </a>
 
             <a href="?route=books" class="card-link card">
-                <h3>Parcourez les livres</h3>
-                <p>Découvrez les livres disponibles à l’échange.</p>
+                <p>Parcourez les livres disponibles chez d'autres membres.</p>
             </a>
 
             <a href="?route=books" class="card-link card">
-                <h3>Contactez un membre</h3>
-                <p>Trouvez un livre et contactez son propriétaire.</p>
+                <p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p>
             </a>
 
         </div>
 
 
+        <a href="?route=books" class="btn-outline">Voir tous les livres</a>
+
+        <section class="values-image">
+            <img src="/tomtroc/public/assets/values.png" alt="">
+        </section>
+
         <div class="values-section">
-
-            <a href="?route=books" class="btn-primary">Voir tous les livres</a>
-
             <h2>Nos valeurs</h2>
 
             <p>
-                Chez Tom Troc, nous mettons l'accent sur le partage, la découverte et la communauté.
-                Nos valeurs sont ancrées dans notre passion pour les livres et notre désir de créer
-                des liens entre les lecteurs.
+                Chez Tom Troc, nous mettons l'accent sur le partage, la découverte et la communauté. Nos valeurs sont ancrées dans notre passion pour les livres et notre désir de créer des liens entre les lecteurs. Nous croyons en la puissance des histoires pour rassembler les gens et inspirer des conversations enrichissantes.
             </p>
 
             <p>
@@ -138,12 +141,15 @@
                 des livres qui attendent patiemment sur les étagères.
             </p>
 
-            <p><strong>L'équipe Tom Troc</strong></p>
-
+            <p class="values-signature">L'équipe Tom Troc</p>
         </div>
-        
-
     </div>
+
+    <img
+        src="/tomtroc/public/assets/heart-hand.svg"
+        alt=""
+        class="values-illustration">
+
 
 </main>
 

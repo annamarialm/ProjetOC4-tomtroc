@@ -3,3 +3,8 @@
 /node_modules
 .DS_Store
 Thumbs.db
+public/assets/avatars/*
+!public/assets/avatars/.gitkeep
+
+public/assets/books/*
+!public/assets/books/.gitkeep

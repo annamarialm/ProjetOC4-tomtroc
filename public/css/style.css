@@ -12,7 +12,10 @@ body {
 
 /* ===== Titles ===== */
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: "Playfair Display", serif;
     font-weight: 400;
 }
@@ -40,6 +43,7 @@ header {
     justify-content: space-between;
     height: 100%;
 }
+
 /* ===== Navigation Groups ===== */
 
 
@@ -52,19 +56,15 @@ header {
     display: flex;
     align-items: center;
     gap: 44px;
-    margin-left: 78px;   /* Logo → Accueil */
+    margin-left: 78px;
+    /* Logo → Accueil */
 }
 
 .nav-user {
     display: flex;
     align-items: center;
-    gap: 58px;           /* Messagerie → Mon compte → Connexion */
-}
-
-.nav-main {
-    display: flex;
-    align-items: center;
-    gap: 44px;        
+    gap: 58px;
+    /* Messagerie → Mon compte → Connexion */
 }
 
 
@@ -168,6 +168,7 @@ a {
 
     text-decoration: none;
 }
+
 .hero-text a {
     margin-top: 40px;
     display: inline-block;
@@ -228,19 +229,22 @@ a {
 
 /* ===== Book Image ===== */
 
-.book-card-image img {
+.book-card-image {
     width: 200px;
     height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+}
+
+.book-card-image img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    display: block;
 }
 
 /* ===== Card Info ===== */
-
-.book-card-info {
-    height: 124px;
-    padding: 0 12px;
-}
 
 .book-card-info {
     height: 124px;
@@ -274,11 +278,6 @@ a {
     font-style: italic;
 }
 
-.btn-secondary {
-    display: block;
-    width: fit-content;
-    margin: 60px auto 0 auto;
-}
 
 .btn-secondary {
     display: block;
@@ -293,4 +292,298 @@ a {
     font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 600;
+}
+
+.book-detail {
+    display: flex;
+    gap: 40px;
+}
+
+.book-left {
+    width: 200px;
+}
+
+.book-left img {
+    width: 100%;
+    height: auto;
+}
+
+.edit-image {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.book-right {
+    flex: 1;
+}
+
+/* ===== Profile Layout ===== */
+
+.profile-container {
+    display: flex;
+    gap: 60px;
+    margin-top: 60px;
+}
+
+/* ===== Profile Card ===== */
+
+.account-profile {
+    width: 250px;
+    text-align: center;
+}
+
+/* Avatar */
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 16px;
+}
+
+/* ===== Books Table ===== */
+
+.books-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.books-table th,
+.books-table td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Book cover */
+
+.book-cover img {
+    width: 60px;
+    height: 90px;
+    object-fit: contain;
+}
+
+.avatar-form {
+    margin-top: 10px;
+}
+
+.avatar-edit-btn {
+    cursor: pointer;
+}
+
+.avatar-edit-btn:hover {
+    text-decoration: underline;
+}
+
+/* ===== How it works section ===== */
+
+/* ===== How it works title ===== */
+
+.how-title {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1;
+    text-align: center;
+
+    margin: 51px auto 24px auto;
+}
+
+/* ===== How intro text ===== */
+
+.how-intro {
+    max-width: 397px;
+    text-align: center;
+    margin: 0 auto 34px auto;
+
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    color: #292929;
+}
+
+/* Cards container */
+
+.how-it-works {
+    display: flex;
+    justify-content: center;
+    gap: 36px;
+    margin-top: 60px;
+}
+
+/* Individual card */
+
+.card {
+    width: 215px;
+    height: 139px;
+
+    background: #ffffff;
+    border-radius: 10px;
+
+    text-decoration: none;
+    color: inherit;
+
+    padding: 17px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card */
+.card p {
+    max-width: 180px;
+    margin: 0 auto;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    text-wrap: balance;
+
+    color: #292929;
+}
+
+.btn-outline {
+    display: block;
+    width: fit-content;
+
+    margin: 48px auto 0 auto;
+    /* centers horizontally */
+
+    padding: 22px 38px;
+
+    border: 1px solid #00AC66;
+    border-radius: 10px;
+
+    background-color: #F5F3EF;
+    color: #00AC66;
+
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+
+    text-align: center;
+    text-decoration: none;
+}
+
+.values-image {
+    margin-top: 80px;
+}
+
+.values-image img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
+/* ===== Values Section ===== */
+
+.values-section {
+    margin-top: 80px;        /* distance from the image above */
+    margin-left: 392px;      /* aligns column to 542px from page edge */
+    position: relative;
+}
+
+
+/* Title */
+
+.values-section h2 {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1;
+
+    margin-bottom: 32px;
+}
+
+/* Paragraph column */
+
+.values-section p {
+    width: 392px;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1;
+
+    color: #292929;
+
+    margin-bottom: 16px;
+}
+
+/* Signature */
+
+.values-section .values-signature  {
+    position: relative;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 12px;
+    line-height: 1;
+
+    color: #A6A6A6;
+
+    margin-top: 39px;
+
+    white-space: nowrap;
+}
+
+.values-section {
+    margin-top: 80px;
+    margin-left: 392px;
+    position: relative;
+
+    margin-bottom: 191px;
+}
+
+.values-illustration {
+    position: absolute;
+
+    width: 120px;
+    height: 102px;
+
+    left: 750px;
+    top: 2795px;
+}
+
+/* ===== Footer ===== */
+footer {
+    width: 100%;
+    height: 61px;
+    background: #FFFFFF;
+    position: relative;
+}
+
+.footer-container {
+    position: absolute;
+    left: 794px;
+    top: 23px;
+
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #292929;
+}
+
+.footer-container a {
+    text-decoration: none;
+    color: inherit;
+    white-space: nowrap;
+}
+
+.footer-logo img {
+    width: 22px;
+    height: 17px;
+    display: block;
 }
