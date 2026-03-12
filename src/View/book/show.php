@@ -1,49 +1,76 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 
-<p>
-    <a href="?route=books">Nos livres</a>
-    >
-    <?= htmlspecialchars($book['title']) ?>
-</p>
+<section class="book-page">
 
-<div class="book-detail">
+    <div class="book-breadcrumb">
+        <a href="?route=books">Nos livres</a>
+        <span>></span>
+        <?= htmlspecialchars($book['title']) ?>
+    </div>
 
-    <div class="book-left">
+    <div class="book-layout">
 
-        <?php if (!empty($book['image'])): ?>
-            <img src="<?= htmlspecialchars($book['image']) ?>" alt="Couverture du livre">
-        <?php else: ?>
-            <img src="/tomtroc/public/assets/books/default.jpg" alt="Couverture du livre">
-        <?php endif; ?>
+        <!-- LEFT IMAGE -->
+        <div class="book-image">
 
-        <p class="edit-image">
-            <a href="?route=edit-book&id=<?= $book['id'] ?>">Modifier l'image</a>
-        </p>
+            <?php
+            $image = !empty($book['image'])
+                ? $book['image']
+                : '/tomtroc/public/assets/books/default.jpg';
+            ?>
+
+            <img src="<?= htmlspecialchars($image) ?>" alt="Couverture du livre">
+
+        </div>
+
+
+        <!-- RIGHT PANEL -->
+        <div class="book-panel">
+
+            <div class="book-info">
+
+                <h1 class="book-title">
+                    <?= htmlspecialchars($book['title']) ?>
+                </h1>
+
+                <p class="book-author">
+                    par <?= htmlspecialchars($book['author']) ?>
+                </p>
+
+                <div class="book-divider"></div>
+
+                <h3 class="book-section-title">DESCRIPTION</h3>
+
+                <div class="book-description">
+                    <?= nl2br(htmlspecialchars($book['description'])) ?>
+                </div>
+                <h3 class="book-section-title">PROPRIÉTAIRE</h3>
+
+                <div class="book-owner">
+
+                    <?php
+                    $avatar = !empty($book['avatar'])
+                        ? $book['avatar']
+                        : '/tomtroc/public/assets/avatars/default-avatar.jpg';
+                    ?>
+
+                    <img src="<?= htmlspecialchars($avatar) ?>" class="owner-avatar" alt="Avatar">
+                    <a href="?route=profile&id=<?= $book['user_id'] ?>" class="owner-name">
+                        <?= htmlspecialchars($book['username']) ?>
+                    </a>
+
+                </div>
+
+                <a href="#" class="btn-primary book-message">
+                    Envoyer un message
+                </a>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <div class="book-right">
-
-        <h1><?= htmlspecialchars($book['title']) ?></h1>
-
-        <p>par <?= htmlspecialchars($book['author']) ?></p>
-
-        <h3>Description</h3>
-
-        <p><?= nl2br(htmlspecialchars($book['description'])) ?></p>
-
-        <h3>Propriétaire</h3>
-
-        <p>
-            <a href="?route=profile&id=<?= $book['user_id'] ?>">
-                <?= htmlspecialchars($book['username']) ?>
-            </a>
-        </p>
-
-        <button>Envoyer un message</button>
-
-    </div>
-
-</div>
+</section>
 
 <?php require __DIR__ . '/../layout/footer.php'; ?>

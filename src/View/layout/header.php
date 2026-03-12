@@ -1,3 +1,7 @@
+<?php
+$currentRoute = $_GET['route'] ?? 'home';
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -17,7 +21,7 @@
 
             <nav class="main-nav">
 
-                <!-- LEFT NAVIGATION (logo + main menu) -->
+                <!-- LEFT NAVIGATION -->
                 <div class="nav-left">
 
                     <!-- LOGO -->
@@ -29,8 +33,16 @@
 
                     <!-- MAIN NAVIGATION -->
                     <div class="nav-main">
-                        <a href="?route=home" class="nav-active">Accueil</a>
-                        <a href="?route=books">Nos livres à l’échange</a>
+
+                        <a href="?route=home"
+                            class="<?= $currentRoute === 'home' ? 'nav-active' : '' ?>">
+                            Accueil
+                        </a>
+
+                        <a href="?route=books" class="nav-divider">
+                            Nos livres à l’échange
+                        </a>
+
                     </div>
 
                 </div>
@@ -38,20 +50,28 @@
                 <!-- USER AREA -->
                 <div class="nav-user">
 
-                    <a href="#" class="nav-link">
+                    <a href="?route=messages"
+                        class="nav-link <?= $currentRoute === 'messages' ? 'nav-active' : '' ?>">
                         <img src="/tomtroc/public/assets/icon-messagerie.svg" alt="" class="nav-icon">
                         Messagerie
                     </a>
+
                     <?php if (isset($_SESSION['user_id'])): ?>
 
-                        <a href="?route=account" class="nav-link">
+                        <a href="?route=account"
+                            class="nav-link <?= $currentRoute === 'account' ? 'nav-active' : '' ?>">
                             <img src="/tomtroc/public/assets/icon-mon-compte.svg" alt="" class="nav-icon">
                             Mon compte
-                        </a> <a href="?route=logout">Déconnexion</a>
+                        </a>
+
+                        <a href="?route=logout">Déconnexion</a>
 
                     <?php else: ?>
 
-                        <a href="?route=login">Connexion</a>
+                        <a href="?route=login"
+                            class="<?= $currentRoute === 'login' ? 'nav-active' : '' ?>">
+                            Connexion
+                        </a>
 
                     <?php endif; ?>
 

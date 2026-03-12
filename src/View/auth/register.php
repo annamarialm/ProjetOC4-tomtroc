@@ -1,25 +1,49 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 
-<h1>Inscription</h1>
+<section class="register-page">
 
-<form method="POST" action="?route=register">
+    <div class="register-layout">
 
-    <label for="username">Pseudo</label>
-    <input type="text" id="username" name="username" required>
+        <!-- LEFT : FORM -->
+        <div class="register-form">
 
-    <label for="email">Adresse email</label>
-    <input type="email" id="email" name="email" required>
+            <div class="register-content">
 
-    <label for="password">Mot de passe</label>
-    <input type="password" id="password" name="password" required>
+                <h1>Inscription</h1>
 
-    <button type="submit">S'inscrire</button>
+                <form method="POST" action="?route=register">
 
-    <p>
-        Déjà inscrit ?
-        <a href="?route=login">Connectez-vous</a>
-    </p>
+                    <label for="username">Pseudo</label>
+                    <input type="text" id="username" name="username" required>
 
-</form>
+                    <label for="email">Adresse email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <button type="submit" class="btn-primary">
+                        S'inscrire
+                    </button>
+
+                    <p class="register-login">
+                        Déjà inscrit ?
+                        <a href="?route=login">Connectez-vous</a>
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT : IMAGE -->
+        <div class="register-image">
+            <img src="/tomtroc/public/assets/register.png" alt="">
+        </div>
+
+    </div>
+
+</section>
 
 <?php require __DIR__ . '/../layout/footer.php'; ?>

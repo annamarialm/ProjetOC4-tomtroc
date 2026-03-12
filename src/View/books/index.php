@@ -1,38 +1,66 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 <?php require_once __DIR__ . '/../../helpers/date_helper.php'; ?>
 
-<h1>Nos livres à l’échange</h1>
+<section class="books-page">
 
-<form method="GET" action="">
-    <input type="hidden" name="route" value="books">
+    <div class="books-layout">
 
-    <input
-        type="text"
-        name="search"
-        placeholder="Rechercher un livre"
-        value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
+        <div class="books-header">
 
-    <button type="submit">Rechercher</button>
-</form>
+            <h1 class="books-title">Nos livres à l’échange</h1>
 
+            <form method="GET" class="books-search">
+                <input type="hidden" name="route" value="books">
 
-<?php foreach ($books as $book): ?>
-
-    <a href="?route=book&id=<?= $book['id'] ?>" style="text-decoration:none; color:inherit;">
-
-        <div>
-
-            <h3><?= htmlspecialchars($book['title']) ?></h3>
-
-            <p><?= htmlspecialchars($book['author']) ?></p>
-
-            <p>Vendu par : <?= htmlspecialchars($book['username']) ?></p>
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="Rechercher un livre"
+                    value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
+            </form>
 
         </div>
 
-    </a>
+        <div class="books-grid">
 
-    <hr>
+            <?php foreach ($books as $book): ?>
 
-<?php endforeach; ?>
+                <article class="book-card">
+
+                    <a href="?route=book&id=<?= $book['id'] ?>" class="book-card-link">
+
+                        <div class="book-card-image">
+                            <?php
+                            $image = !empty($book['image'])
+                                ? $book['image']
+                                : '/tomtroc/public/assets/books/default.jpg';
+                            ?>
+
+                            <img src="<?= htmlspecialchars($image) ?>" alt="Couverture du livre">
+                        </div>
+
+                        <div class="book-card-info">
+
+                            <h3><?= htmlspecialchars($book['title']) ?></h3>
+
+                            <p class="book-author"><?= htmlspecialchars($book['author']) ?></p>
+
+                            <p class="book-owner">
+                                Vendu par : <?= htmlspecialchars($book['username']) ?>
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                </article>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    </div>
+
+</section>
+
 <?php require __DIR__ . '/../layout/footer.php'; ?>

@@ -20,7 +20,7 @@ function getMembershipDuration($createdAt)
 
     } else {
 
-        $result = $interval->d . ' jours' . ($interval->d > 1 ? 's' : '');
+        $result = $interval->d . ' jour' . ($interval->d > 1 ? 's' : '');
     }
 
     return $result;

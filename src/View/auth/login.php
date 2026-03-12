@@ -1,22 +1,46 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 
-<h1>Connexion</h1>
+<section class="register-page">
 
-<form method="POST" action="?route=login">
+    <div class="register-layout">
 
-    <label for="email">Adresse email</label>
-    <input type="email" id="email" name="email" required>
+        <!-- LEFT : FORM -->
+        <div class="register-form">
 
-    <label for="password">Mot de passe</label>
-    <input type="password" id="password" name="password" required>
+            <div class="register-content">
 
-    <button type="submit">Se connecter</button>
+                <h1>Connexion</h1>
 
-    <p>
-        Pas de compte ?
-        <a href="?route=register">Inscrivez-vous</a>
-    </p>
+                <form method="POST" action="?route=login">
 
-</form>
+                    <label for="email">Adresse email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <button type="submit" class="btn-primary register-btn">
+                        Se connecter
+                    </button>
+
+                    <p class="register-login">
+                        Pas de compte ?
+                        <a href="?route=register">Inscrivez-vous</a>
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT : IMAGE -->
+        <div class="register-image">
+            <img src="/tomtroc/public/assets/register.png" alt="">
+        </div>
+
+    </div>
+
+</section>
 
 <?php require __DIR__ . '/../layout/footer.php'; ?>

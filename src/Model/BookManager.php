@@ -118,7 +118,7 @@ class BookManager
 
     public function findBookWithOwner($id)
     {
-        $sql = "SELECT books.*, users.username
+        $sql = "SELECT books.*, users.username, users.avatar
                 FROM books
                 JOIN users ON books.user_id = users.id
                 WHERE books.id = :id

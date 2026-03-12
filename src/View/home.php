@@ -65,7 +65,7 @@
                                     <?= htmlspecialchars($book['author']) ?>
                                 </p>
 
-                                <p class="book-owner">
+                                <p class="book-card-owner">
                                     Proposé par <?= htmlspecialchars($book['username']) ?>
                                 </p>
                             </div>
