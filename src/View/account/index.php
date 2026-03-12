@@ -93,97 +93,99 @@
 
     <a class="add-book-link" href="?route=create-book">Ajouter un livre</a>
 
-<div class="account-books">
+    <div class="account-books">
 
-    <table class="books-table">
+        <table class="books-table">
 
-        <colgroup>
-            <col class="col-photo">
-            <col class="col-title">
-            <col class="col-author">
-            <col class="col-description">
-            <col class="col-status">
-            <col class="col-action">
-        </colgroup>
+            <colgroup>
+                <col class="col-photo">
+                <col class="col-title">
+                <col class="col-author">
+                <col class="col-description">
+                <col class="col-status">
+                <col class="col-action">
+            </colgroup>
 
-        <thead>
-            <tr>
-                <th>PHOTO</th>
-                <th>TITRE</th>
-                <th>AUTEUR</th>
-                <th>DESCRIPTION</th>
-                <th>DISPONIBILITE</th>
-                <th>ACTION</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <?php foreach ($books as $book): ?>
-
+            <thead>
                 <tr>
-
-                    <td class="book-photo-cell">
-
-                        <?php
-                        $image = !empty($book['image'])
-                            ? $book['image']
-                            : '/tomtroc/public/assets/books/default.jpg';
-                        ?>
-
-                        <img
-                            src="<?= htmlspecialchars($image) ?>"
-                            alt="<?= htmlspecialchars($book['title']) ?>"
-                            class="book-photo">
-
-                    </td>
-
-                    <td class="book-title-cell">
-                        <div class="book-title">
-                            <?= htmlspecialchars($book['title']) ?>
-                        </div>
-                    </td>
-
-                    <td class="book-author-cell">
-                        <?= htmlspecialchars($book['author']) ?>
-                    </td>
-
-                    <td class="book-description-cell">
-                        <div class="book-description">
-                            <?= htmlspecialchars(mb_strimwidth($book['description'], 0, 85, '...')) ?>
-                        </div>
-                    </td>
-
-                    <td class="book-status-cell">
-                        <span class="book-status <?= $book['status'] === 'available' ? 'available' : 'unavailable' ?>">
-                            <?= $book['status'] === 'available' ? 'disponible' : 'non dispo.' ?>
-                        </span>
-                    </td>
-
-                    <td class="book-actions">
-                        <div class="actions-wrapper">
-
-                            <a class="edit-book"
-                               href="?route=edit-book&id=<?= $book['id'] ?>">
-                                Éditer
-                            </a>
-
-                            <a class="delete-book"
-                               href="?route=delete-book&id=<?= $book['id'] ?>"
-                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce livre ?');">
-                                Supprimer
-                            </a>
-
-                        </div>
-                    </td>
-
+                    <th>PHOTO</th>
+                    <th>TITRE</th>
+                    <th>AUTEUR</th>
+                    <th>DESCRIPTION</th>
+                    <th>DISPONIBILITE</th>
+                    <th>ACTION</th>
                 </tr>
+            </thead>
 
-            <?php endforeach; ?>
-        </tbody>
+            <tbody>
+                <?php foreach ($books as $book): ?>
 
-    </table>
+                    <tr>
 
-</div>
+                        <td class="book-photo-cell">
+
+                            <?php
+                            $image = !empty($book['image'])
+                                ? $book['image']
+                                : '/tomtroc/public/assets/books/default.jpg';
+                            ?>
+
+                            <img
+                                src="<?= htmlspecialchars($image) ?>"
+                                alt="<?= htmlspecialchars($book['title']) ?>"
+                                class="book-photo">
+
+                        </td>
+
+                        <td class="book-title-cell">
+                            <a href="?route=book&id=<?= $book['id'] ?>" class="book-title-link">
+                                <div class="book-title">
+                                    <?= htmlspecialchars($book['title']) ?>
+                                </div>
+                            </a>
+                        </td>
+
+                        <td class="book-author-cell">
+                            <?= htmlspecialchars($book['author']) ?>
+                        </td>
+
+                        <td class="book-description-cell">
+                            <div class="book-description">
+                                <?= htmlspecialchars(mb_strimwidth($book['description'], 0, 85, '...')) ?>
+                            </div>
+                        </td>
+
+                        <td class="book-status-cell">
+                            <span class="book-status <?= $book['status'] === 'available' ? 'available' : 'unavailable' ?>">
+                                <?= $book['status'] === 'available' ? 'disponible' : 'non dispo.' ?>
+                            </span>
+                        </td>
+
+                        <td class="book-actions">
+                            <div class="actions-wrapper">
+
+                                <a class="edit-book"
+                                    href="?route=edit-book&id=<?= $book['id'] ?>">
+                                    Éditer
+                                </a>
+
+                                <a class="delete-book"
+                                    href="?route=delete-book&id=<?= $book['id'] ?>"
+                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce livre ?');">
+                                    Supprimer
+                                </a>
+
+                            </div>
+                        </td>
+
+                    </tr>
+
+                <?php endforeach; ?>
+            </tbody>
+
+        </table>
+
+    </div>
 
     <a href="?route=logout">Se déconnecter</a>
 

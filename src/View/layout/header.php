@@ -39,7 +39,8 @@ $currentRoute = $_GET['route'] ?? 'home';
                             Accueil
                         </a>
 
-                        <a href="?route=books" class="nav-divider">
+                        <a href="?route=books"
+                            class="nav-divider <?= $currentRoute === 'books' ? 'nav-active' : '' ?>">
                             Nos livres à l’échange
                         </a>
 
