@@ -1,29 +1,94 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 
-<h1>Ajouter un livre</h1>
+<section class="edit-book-page">
 
-<form method="POST" action="?route=create-book" enctype="multipart/form-data">
+    <div class="container">
 
-    <label for="title">Titre</label>
-    <input type="text" name="title" id="title" required>
+        <a href="?route=account" class="edit-book-back">← retour</a>
 
-    <label for="author">Auteur</label>
-    <input type="text" name="author" id="author" required>
+        <h1 class="edit-book-title">Ajouter un livre</h1>
 
-    <label for="description">Commentaires</label>
-    <textarea name="description" id="description"></textarea>
+        <div class="edit-book-card">
 
-    <label for="status">Disponibilité</label>
-    <select name="status" id="status">
-        <option value="available">Disponible</option>
-        <option value="unavailable">Indisponible</option>
-    </select>
+            <form method="POST" action="?route=create-book" enctype="multipart/form-data" class="edit-book-layout">
 
-    <label for="image">Image du livre</label>
-    <input type="file" name="image" id="image" accept="image/*">
+                <!-- LEFT SIDE : IMAGE -->
+                <div class="edit-book-image">
 
-    <button type="submit">Valider</button>
+                    <label>Photo</label>
 
-</form>
+                    <img src="/tomtroc/public/assets/books/default.jpg" alt="Couverture du livre">
+
+                    <label for="image" class="edit-photo-link">Ajouter une photo</label>
+
+                    <input
+                        type="file"
+                        name="image"
+                        id="image"
+                        accept="image/*"
+                        style="display:none;">
+
+                </div>
+
+
+                <!-- RIGHT SIDE : FORM -->
+                <div class="edit-book-form">
+
+                    <div class="form-group">
+                        <label for="title">Titre</label>
+
+                        <input
+                            type="text"
+                            name="title"
+                            id="title"
+                            required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="author">Auteur</label>
+
+                        <input
+                            type="text"
+                            name="author"
+                            id="author"
+                            required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="description">Commentaire</label>
+
+                        <textarea
+                            name="description"
+                            id="description"></textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="status">Disponibilité</label>
+
+                        <select name="status" id="status">
+                            <option value="available">disponible</option>
+                            <option value="unavailable">indisponible</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <button type="submit" class="edit-book-submit">
+                            Ajouter
+                        </button>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
 
 <?php require __DIR__ . '/../layout/footer.php'; ?>

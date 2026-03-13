@@ -187,8 +187,6 @@
 
     </div>
 
-    <a href="?route=logout">Se déconnecter</a>
-
 </section>
 
 <?php require __DIR__ . '/../layout/footer.php'; ?>

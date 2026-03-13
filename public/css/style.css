@@ -469,8 +469,8 @@ header {
     position: absolute;
     width: 120px;
     height: 102px;
-    left: 750px;
-    top: 2795px;
+    left: 890px;
+    top: 2765px;
 }
 
 /* =========================================
@@ -838,7 +838,7 @@ footer {
 ========================================= */
 
 .account-top {
-    margin-top: 48px;
+    margin-top: 13px;
     margin-left: 150px;
 
     width: 1135px;
@@ -1276,6 +1276,15 @@ footer {
     text-decoration: underline;
 }
 
+
+/* =========================================
+   PRIVATE ACCOUNT PAGE – TABLE SPACING
+========================================= */
+
+.account-page:not(.public-profile) {
+    padding-bottom: 102px;
+}
+
 /* =========================================
    EDIT BOOK PAGE
 ========================================= */
@@ -1495,4 +1504,85 @@ footer {
 
 .edit-book-submit:hover {
     filter: brightness(0.95);
+}
+
+/* =========================================
+   PUBLIC PROFILE PAGE
+========================================= */
+
+.account-page.public-profile .account-top {
+    gap: 28px;
+}
+
+.account-page.public-profile .account-profile {
+    width: 341px;
+    height: 579px;
+    padding: 0;
+}
+
+.account-page.public-profile .account-books {
+    flex: 1;
+    margin-left: 0;
+}
+
+/* =========================================
+   PUBLIC PROFILE CARD CONTENT
+========================================= */
+
+.account-page.public-profile .profile-avatar {
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 48px auto 118px auto;
+}
+
+.account-page.public-profile .profile-name {
+    margin-bottom: 11px;
+}
+
+.account-page.public-profile .member-since {
+    margin-bottom: 21px;
+}
+
+.account-page.public-profile .library-title {
+    margin-bottom: 6px;
+}
+
+.account-page.public-profile .library-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.account-page.public-profile .library-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* =========================================
+   PUBLIC PROFILE BUTTON
+========================================= */
+
+.account-page.public-profile .btn-outline {
+    width: 215px;
+    height: 63px;
+    margin: 45px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px 38px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* =========================================
+   PUBLIC PROFILE TABLE TITLE WRAP
+========================================= */
+
+.account-page.public-profile .title-text {
+    max-width: 120px;
+    line-height: 1.3;
 }
