@@ -118,9 +118,24 @@
                         <div class="conversation-message <?= $isMe ? 'message-right' : 'message-left' ?>">
 
                             <!-- ✅ TIMESTAMP FIRST (outside bubble) -->
-                            <span class="message-time">
-                                <?= formatMessageTime($msg['created_at']) ?>
-                            </span>
+                            <?php if (!$isMe): ?>
+                                <div class="message-meta-left">
+                                    <img
+                                        src="<?= htmlspecialchars(!empty($otherUserData['avatar'])
+                                                    ? $otherUserData['avatar']
+                                                    : '/tomtroc/public/assets/avatars/default-avatar.jpg') ?>"
+                                        class="message-avatar-small"
+                                        alt="avatar">
+
+                                    <span class="message-time">
+                                        <?= formatMessageTime($msg['created_at']) ?>
+                                    </span>
+                                </div>
+                            <?php else: ?>
+                                <span class="message-time">
+                                    <?= formatMessageTime($msg['created_at']) ?>
+                                </span>
+                            <?php endif; ?>
 
                             <!-- ✅ BUBBLE -->
                             <div class="message-bubble">
@@ -165,13 +180,14 @@
 </section>
 
 <script>
-window.addEventListener("load", function () {
-    const container = document.querySelector(".messages-wrapper");
+    window.addEventListener("load", function() {
+        const container = document.querySelector(".messages-wrapper");
 
-    if (container) {
-        container.scrollTop = container.scrollHeight;
-    }
-});
+        if (container) {
+            container.scrollTop = container.scrollHeight;
+        }
+    });
 </script>
+
 
 <?php require __DIR__ . '/../layout/footer.php'; ?>
