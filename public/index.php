@@ -7,6 +7,7 @@ require_once __DIR__ . '/../src/Controller/HomeController.php';
 require_once __DIR__ . '/../src/Controller/AuthController.php';
 require_once __DIR__ . '/../src/Controller/AccountController.php';
 require_once __DIR__ . '/../src/Controller/BookController.php';
+require_once __DIR__ . '/../src/Controller/MessageController.php';
 
 // Get the route from the URL (default to 'home' if none is provided)
 
@@ -75,6 +76,11 @@ switch ($route) {
     case 'update-profile':
         $controller = new AccountController();
         $controller->updateProfile();
+        break;
+
+    case 'messages':
+        $controller = new MessageController();
+        $controller->index();
         break;
 
     default:

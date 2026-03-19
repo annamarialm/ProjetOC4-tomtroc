@@ -17,44 +17,42 @@ class AuthController
             $userManager = new UserManager();
             $userManager->createUser($username, $email, $hashedPassword);
 
-            echo "Inscription réussie!";
-
-            return;
+            // ✅ Redirect instead of echo
+            header('Location: ?route=login&registered=1');
+            exit;
         }
 
         require __DIR__ . '/../View/auth/register.php';
     }
-
     public function login()
-{
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $email = $_POST['email'] ?? '';
-        $password = $_POST['password'] ?? '';
+            $email = $_POST['email'] ?? '';
+            $password = $_POST['password'] ?? '';
 
-        $userManager = new UserManager();
-        $user = $userManager->findByEmail($email);
+            $userManager = new UserManager();
+            $user = $userManager->findByEmail($email);
 
-        if ($user && password_verify($password, $user['password'])) {
+            if ($user && password_verify($password, $user['password'])) {
 
-            $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_id'] = $user['id'];
 
-           header('Location: ?route=account');
-           exit;
+                header('Location: ?route=account');
+                exit;
+            }
+
+            echo "Email ou mot de passe incorrect";
         }
 
-        echo "Email ou mot de passe incorrect";
+        require __DIR__ . '/../View/auth/login.php';
     }
 
-    require __DIR__ . '/../View/auth/login.php';
-}
+    public function logout()
+    {
+        session_destroy();
 
-public function logout()
-{
-    session_destroy();
-
-    header('Location: ?route=login');
-    exit;
-}
-
+        header('Location: ?route=login');
+        exit;
+    }
 }

@@ -61,9 +61,11 @@
 
                 </div>
 
-                <a href="#" class="btn-primary book-message">
-                    Envoyer un message
-                </a>
+                <?php if ($_SESSION['user_id'] != $book['user_id']): ?>
+                    <a href="?route=messages&user=<?= $book['user_id'] ?>" class="btn-primary book-message">
+                        Envoyer un message
+                    </a>
+                <?php endif; ?>
 
             </div>
 

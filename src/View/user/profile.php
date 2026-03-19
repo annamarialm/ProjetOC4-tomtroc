@@ -37,9 +37,11 @@
                 <span><?= count($books) ?> livres</span>
             </div>
 
-            <a href="#" class="btn-outline">
-                Écrire un message
-            </a>
+            <?php if ($_SESSION['user_id'] != $user['id']): ?>
+                <a href="?route=messages&user=<?= $user['id'] ?>" class="btn-outline">
+                    Écrire un message
+                </a>
+            <?php endif; ?>
 
         </div>
 

@@ -45,8 +45,8 @@
 
                             <p class="book-author"><?= htmlspecialchars($book['author']) ?></p>
 
-                            <p class="book-owner">
-                                Vendu par : <?= htmlspecialchars($book['username']) ?>
+                            <p class="book-card-owner">
+                                Proposé par : <?= htmlspecialchars($book['username']) ?>
                             </p>
 
                         </div>
