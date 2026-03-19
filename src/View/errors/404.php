@@ -1,9 +1,15 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 
-<h1>404</h1>
+<main>
 
-<p>La page que vous recherchez n'existe pas.</p>
+    <h1>404</h1>
 
-<a href="?route=home">Retour à l'accueil</a>
+    <p>La page que vous recherchez n'existe pas.</p>
+
+    <a href="?route=home" aria-label="Retour à la page d'accueil">
+        Retour à l'accueil
+    </a>
+
+</main>
 
 <?php require __DIR__ . '/../layout/footer.php'; ?>

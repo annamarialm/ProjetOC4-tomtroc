@@ -4,13 +4,18 @@
 
     <div class="container">
 
-        <a href="?route=account" class="edit-book-back">← retour</a>
+        <a href="?route=account" class="edit-book-back" aria-label="Retour à votre compte">← retour</a>
 
-        <h1 class="edit-book-title">Modifier les informations</h1>
+        <h1 id="edit-book-title" class="edit-book-title">Modifier les informations</h1>
 
         <div class="edit-book-card">
 
-            <form method="POST" enctype="multipart/form-data" class="edit-book-layout">
+            <form 
+                method="POST" 
+                enctype="multipart/form-data" 
+                class="edit-book-layout"
+                aria-labelledby="edit-book-title"
+            >
 
                 <!-- LEFT SIDE : IMAGE -->
                 <div class="edit-book-image">
@@ -18,9 +23,15 @@
                     <label>Photo</label>
 
                     <?php if (!empty($book['image'])): ?>
-                        <img src="<?= htmlspecialchars($book['image']) ?>" alt="Couverture du livre">
+                        <img 
+                            src="<?= htmlspecialchars($book['image']) ?>" 
+                            alt="Couverture de <?= htmlspecialchars($book['title']) ?> par <?= htmlspecialchars($book['author']) ?>"
+                        >
                     <?php else: ?>
-                        <img src="/tomtroc/public/assets/books/default.jpg" alt="Couverture du livre">
+                        <img 
+                            src="/tomtroc/public/assets/books/default.jpg" 
+                            alt="Couverture par défaut du livre"
+                        >
                     <?php endif; ?>
 
                     <label for="image" class="edit-photo-link">Modifier la photo</label>
@@ -46,7 +57,9 @@
                             name="title"
                             id="title"
                             value="<?= htmlspecialchars($book['title']) ?>"
-                            required>
+                            required
+                            aria-required="true"
+                            autocomplete="off">
                     </div>
 
 
@@ -58,7 +71,9 @@
                             name="author"
                             id="author"
                             value="<?= htmlspecialchars($book['author']) ?>"
-                            required>
+                            required
+                            aria-required="true"
+                            autocomplete="name">
                     </div>
 
 

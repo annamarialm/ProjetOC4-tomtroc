@@ -3,9 +3,9 @@
 
 <section class="account-page">
 
-    <h1 class="account-title">Mon compte</h1>
+    <h1 id="account-title" class="account-title">Mon compte</h1>
 
-    <form method="POST" action="?route=update-profile" enctype="multipart/form-data">
+    <form method="POST" action="?route=update-profile" enctype="multipart/form-data" aria-labelledby="account-title">
 
         <div class="account-top">
 
@@ -20,7 +20,7 @@
 
                 <img
                     src="<?= htmlspecialchars($avatar) ?>"
-                    alt="Photo de profil"
+                    alt="Photo de profil de <?= htmlspecialchars($user['username']) ?>"
                     class="profile-avatar">
 
                 <input
@@ -43,7 +43,11 @@
                 <h3 class="library-title">BIBLIOTHÈQUE</h3>
 
                 <div class="library-count">
-                    <img src="/tomtroc/public/assets/book-icon.svg" class="library-icon" alt="">
+                    <img 
+                        src="/tomtroc/public/assets/book-icon.svg" 
+                        class="library-icon" 
+                        alt="" 
+                        aria-hidden="true">
                     <span><?= count($books) ?> livres</span>
                 </div>
 
@@ -61,7 +65,8 @@
                         type="email"
                         id="email"
                         name="email"
-                        value="<?= htmlspecialchars($user['email']) ?>">
+                        value="<?= htmlspecialchars($user['email']) ?>"
+                        autocomplete="email">
                 </div>
 
                 <div class="form-group">
@@ -70,7 +75,8 @@
                         type="password"
                         id="password"
                         name="password"
-                        placeholder="••••••••">
+                        placeholder="••••••••"
+                        autocomplete="new-password">
                 </div>
 
                 <div class="form-group">
@@ -79,9 +85,9 @@
                         type="text"
                         id="username"
                         name="username"
-                        value="<?= htmlspecialchars($user['username']) ?>">
+                        value="<?= htmlspecialchars($user['username']) ?>"
+                        autocomplete="username">
                 </div>
-
 
                 <button type="submit">Enregistrer</button>
 
@@ -91,11 +97,21 @@
 
     </form>
 
-    <a class="add-book-link" href="?route=create-book">Ajouter un livre</a>
+    <a 
+        class="add-book-link" 
+        href="?route=create-book"
+        aria-label="Ajouter un nouveau livre"
+    >
+        Ajouter un livre
+    </a>
 
     <div class="account-books">
 
         <table class="books-table">
+
+            <caption class="sr-only">
+                Liste de vos livres
+            </caption>
 
             <colgroup>
                 <col class="col-photo">
@@ -108,12 +124,12 @@
 
             <thead>
                 <tr>
-                    <th>PHOTO</th>
-                    <th>TITRE</th>
-                    <th>AUTEUR</th>
-                    <th>DESCRIPTION</th>
-                    <th>DISPONIBILITE</th>
-                    <th>ACTION</th>
+                    <th scope="col" class="table-header">PHOTO</th>
+                    <th scope="col" class="table-header">TITRE</th>
+                    <th scope="col" class="table-header">AUTEUR</th>
+                    <th scope="col" class="table-header">DESCRIPTION</th>
+                    <th scope="col" class="table-header">DISPONIBILITE</th>
+                    <th scope="col" class="table-header">ACTION</th>
                 </tr>
             </thead>
 
@@ -132,13 +148,17 @@
 
                             <img
                                 src="<?= htmlspecialchars($image) ?>"
-                                alt="<?= htmlspecialchars($book['title']) ?>"
+                                alt="Couverture de <?= htmlspecialchars($book['title']) ?> par <?= htmlspecialchars($book['author']) ?>"
                                 class="book-photo">
 
                         </td>
 
                         <td class="book-title-cell">
-                            <a href="?route=book&id=<?= $book['id'] ?>" class="book-title-link">
+                            <a 
+                                href="?route=book&id=<?= $book['id'] ?>" 
+                                class="book-title-link"
+                                aria-label="Voir le livre <?= htmlspecialchars($book['title']) ?>"
+                            >
                                 <div class="book-title">
                                     <?= htmlspecialchars($book['title']) ?>
                                 </div>
@@ -164,14 +184,20 @@
                         <td class="book-actions">
                             <div class="actions-wrapper">
 
-                                <a class="edit-book"
-                                    href="?route=edit-book&id=<?= $book['id'] ?>">
+                                <a 
+                                    class="edit-book"
+                                    href="?route=edit-book&id=<?= $book['id'] ?>"
+                                    aria-label="Modifier le livre <?= htmlspecialchars($book['title']) ?>"
+                                >
                                     Éditer
                                 </a>
 
-                                <a class="delete-book"
+                                <a 
+                                    class="delete-book"
                                     href="?route=delete-book&id=<?= $book['id'] ?>"
-                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce livre ?');">
+                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce livre ?');"
+                                    aria-label="Supprimer le livre <?= htmlspecialchars($book['title']) ?>"
+                                >
                                     Supprimer
                                 </a>
 

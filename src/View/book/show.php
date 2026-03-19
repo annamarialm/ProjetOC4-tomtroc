@@ -19,7 +19,10 @@
                 : '/tomtroc/public/assets/books/default.jpg';
             ?>
 
-            <img src="<?= htmlspecialchars($image) ?>" alt="Couverture du livre">
+            <img 
+                src="<?= htmlspecialchars($image) ?>" 
+                alt="Couverture de <?= htmlspecialchars($book['title']) ?> par <?= htmlspecialchars($book['author']) ?>"
+            >
 
         </div>
 
@@ -44,6 +47,7 @@
                 <div class="book-description">
                     <?= nl2br(htmlspecialchars($book['description'])) ?>
                 </div>
+
                 <h3 class="book-section-title">PROPRIÉTAIRE</h3>
 
                 <div class="book-owner">
@@ -54,15 +58,28 @@
                         : '/tomtroc/public/assets/avatars/default-avatar.jpg';
                     ?>
 
-                    <img src="<?= htmlspecialchars($avatar) ?>" class="owner-avatar" alt="Avatar">
-                    <a href="?route=profile&id=<?= $book['user_id'] ?>" class="owner-name">
+                    <img 
+                        src="<?= htmlspecialchars($avatar) ?>" 
+                        class="owner-avatar" 
+                        alt="Avatar de <?= htmlspecialchars($book['username']) ?>"
+                    >
+
+                    <a 
+                        href="?route=profile&id=<?= $book['user_id'] ?>" 
+                        class="owner-name"
+                        aria-label="Voir le profil de <?= htmlspecialchars($book['username']) ?>"
+                    >
                         <?= htmlspecialchars($book['username']) ?>
                     </a>
 
                 </div>
 
                 <?php if ($_SESSION['user_id'] != $book['user_id']): ?>
-                    <a href="?route=messages&user=<?= $book['user_id'] ?>" class="btn-primary book-message">
+                    <a 
+                        href="?route=messages&user=<?= $book['user_id'] ?>" 
+                        class="btn-primary book-message"
+                        aria-label="Envoyer un message à <?= htmlspecialchars($book['username']) ?>"
+                    >
                         Envoyer un message
                     </a>
                 <?php endif; ?>

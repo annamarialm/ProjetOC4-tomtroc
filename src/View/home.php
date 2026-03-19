@@ -4,7 +4,6 @@
 
     <div class="container">
 
-
         <section class="hero">
 
             <div class="hero-text">
@@ -21,17 +20,17 @@
             </div>
 
             <div class="hero-image">
-                <img src="/tomtroc/public/assets/imghome.jpg" alt="Lecteurs échangeant des livres">
-                <p class="image-credit">Hamza</p>
+                <img src="/tomtroc/public/assets/imghome.jpg" alt="Personne lisant entourée de livres">
+                <p class="image-credit">
+                    <span class="sr-only">Crédit image :</span> Hamza
+                </p>
             </div>
 
         </section>
 
-
     </div>
 
     <section class="latest-books">
-
 
         <div class="container">
 
@@ -41,7 +40,7 @@
 
                 <?php foreach ($latestBooks as $book): ?>
 
-                    <div class="book-card">
+                    <article class="book-card">
 
                         <a href="?route=book&id=<?= $book['id'] ?>" class="book-card-link">
 
@@ -53,7 +52,10 @@
                                     : '/tomtroc/public/assets/books/default.jpg';
                                 ?>
 
-                                <img src="<?= htmlspecialchars($image) ?>" alt="Couverture du livre">
+                                <img 
+                                    src="<?= htmlspecialchars($image) ?>" 
+                                    alt="Couverture de <?= htmlspecialchars($book['title']) ?> par <?= htmlspecialchars($book['author']) ?>"
+                                >
 
                             </div>
 
@@ -68,66 +70,80 @@
                                 <p class="book-card-owner">
                                     Proposé par <?= htmlspecialchars($book['username']) ?>
                                 </p>
+
                             </div>
 
                         </a>
 
-                    </div>
+                    </article>
 
                 <?php endforeach; ?>
 
             </div>
 
-            <a href="?route=books" class="btn-secondary">Voir tous les livres</a>
+            <a href="?route=books" class="btn-secondary">
+                Voir tous les livres disponibles
+            </a>
 
         </div>
 
+    </section>
 
+    <section class="how-section">
+
+        <div class="container">
+
+            <h2 class="how-title">Comment ça marche ?</h2>
+
+            <p class="how-intro">
+                Échanger des livres avec TomTroc c’est simple et amusant !
+                Suivez ces étapes pour commencer :
+            </p>
+
+            <div class="how-it-works">
+
+                <a href="?route=register" class="card-link card">
+                    <h3>Inscription</h3>
+                    <p>Inscrivez-vous gratuitement sur notre plateforme.</p>
+                </a>
+
+                <a href="?route=create-book" class="card-link card">
+                    <h3>Ajout de livres</h3>
+                    <p>Ajoutez les livres que vous souhaitez échanger à votre profil.</p>
+                </a>
+
+                <a href="?route=books" class="card-link card">
+                    <h3>Parcourir</h3>
+                    <p>Parcourez les livres disponibles chez d'autres membres.</p>
+                </a>
+
+                <a href="?route=books" class="card-link card">
+                    <h3>Échanger</h3>
+                    <p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p>
+                </a>
+
+            </div>
+
+            <a href="?route=books" class="btn-outline">
+                Explorer tous les livres
+            </a>
+
+        </div>
+
+    </section>
+
+    <section class="values-image">
+        <img src="/tomtroc/public/assets/values.png" alt="" aria-hidden="true">
     </section>
 
     <div class="container">
 
+        <section class="values-section">
 
-        <h2 class="how-title">Comment ça marche ?</h2>
-
-        <p class="how-intro">
-            Échanger des livres avec TomTroc c’est simple et amusant !
-            Suivez ces étapes pour commencer :
-        </p>
-
-        <div class="how-it-works">
-
-            <a href="?route=register" class="card-link card">
-
-                <p>Inscrivez-vous gratuitement sur notre plateforme.</p>
-            </a>
-
-            <a href="?route=create-book" class="card-link card">
-                <p>Ajoutez les livres que vous souhaitez échanger à votre profil.</p>
-            </a>
-
-            <a href="?route=books" class="card-link card">
-                <p>Parcourez les livres disponibles chez d'autres membres.</p>
-            </a>
-
-            <a href="?route=books" class="card-link card">
-                <p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p>
-            </a>
-
-        </div>
-
-
-        <a href="?route=books" class="btn-outline">Voir tous les livres</a>
-
-        <section class="values-image">
-            <img src="/tomtroc/public/assets/values.png" alt="">
-        </section>
-
-        <div class="values-section">
             <h2>Nos valeurs</h2>
 
             <p>
-                Chez Tom Troc, nous mettons l'accent sur le partage, la découverte et la communauté. Nos valeurs sont ancrées dans notre passion pour les livres et notre désir de créer des liens entre les lecteurs. Nous croyons en la puissance des histoires pour rassembler les gens et inspirer des conversations enrichissantes.
+                Chez Tom Troc, nous mettons l'accent sur le partage, la découverte et la communauté.
             </p>
 
             <p>
@@ -138,18 +154,20 @@
             <p>
                 Nous sommes passionnés par la création d'une plateforme conviviale qui permet aux
                 lecteurs de se connecter, de partager leurs découvertes littéraires et d'échanger
-                des livres qui attendent patiemment sur les étagères.
+                des livres.
             </p>
 
             <p class="values-signature">L'équipe Tom Troc</p>
-        </div>
+
+        </section>
+
     </div>
 
     <img
         src="/tomtroc/public/assets/heart-hand.svg"
         alt=""
+        aria-hidden="true"
         class="values-illustration">
-
 
 </main>
 

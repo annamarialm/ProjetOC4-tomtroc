@@ -17,7 +17,7 @@
 
             <img
                 src="<?= htmlspecialchars($avatar) ?>"
-                alt="Photo de profil"
+                alt="Photo de profil de <?= htmlspecialchars($user['username']) ?>"
                 class="profile-avatar">
 
             <div class="profile-name">
@@ -33,12 +33,20 @@
             </div>
 
             <div class="library-count">
-                <img src="/tomtroc/public/assets/book-icon.svg" class="library-icon" alt="">
+                <img 
+                    src="/tomtroc/public/assets/book-icon.svg" 
+                    class="library-icon" 
+                    alt="" 
+                    aria-hidden="true">
                 <span><?= count($books) ?> livres</span>
             </div>
 
             <?php if ($_SESSION['user_id'] != $user['id']): ?>
-                <a href="?route=messages&user=<?= $user['id'] ?>" class="btn-outline">
+                <a 
+                    href="?route=messages&user=<?= $user['id'] ?>" 
+                    class="btn-outline"
+                    aria-label="Envoyer un message à <?= htmlspecialchars($user['username']) ?>"
+                >
                     Écrire un message
                 </a>
             <?php endif; ?>
@@ -52,6 +60,10 @@
 
             <table class="books-table">
 
+                <caption class="sr-only">
+                    Liste des livres de <?= htmlspecialchars($user['username']) ?>
+                </caption>
+
                 <colgroup>
                     <col class="col-photo">
                     <col class="col-title">
@@ -61,10 +73,10 @@
 
                 <thead>
                     <tr>
-                        <th>PHOTO</th>
-                        <th>TITRE</th>
-                        <th>AUTEUR</th>
-                        <th>DESCRIPTION</th>
+                        <th scope="col" class="table-header">PHOTO</th>
+                        <th scope="col" class="table-header">TITRE</th>
+                        <th scope="col" class="table-header">AUTEUR</th>
+                        <th scope="col" class="table-header">DESCRIPTION</th>
                     </tr>
                 </thead>
 
@@ -84,7 +96,7 @@
 
                                 <img
                                     src="<?= htmlspecialchars($image) ?>"
-                                    alt="Couverture"
+                                    alt="Couverture de <?= htmlspecialchars($book['title']) ?> par <?= htmlspecialchars($book['author']) ?>"
                                     class="book-photo">
 
                             </td>

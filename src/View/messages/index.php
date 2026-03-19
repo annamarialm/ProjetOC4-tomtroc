@@ -6,13 +6,13 @@
     <div class="messaging-container">
 
         <!-- LEFT COLUMN : INBOX -->
-        <div class="message-list">
+        <div class="message-list" role="navigation" aria-label="Conversations">
 
             <h1 class="messaging-title">Messagerie</h1>
 
             <?php if (empty($messages)): ?>
 
-                <p>Aucun message</p>
+                <p role="status">Aucun message</p>
 
             <?php else: ?>
 
@@ -28,14 +28,18 @@
                         : '/tomtroc/public/assets/avatars/default-avatar.jpg';
                     ?>
 
-                    <div class="message-item">
+                    <div class="message-item" role="listitem">
 
                         <a href="?route=messages&user=<?= $otherUserId ?>"
                             class="message-link <?= ($otherUser == $otherUserId) ? 'active' : '' ?>">
 
                             <div class="message-row">
 
-                                <img src="<?= htmlspecialchars($avatar) ?>" class="message-avatar" alt="avatar">
+                                <img 
+                                    src="<?= htmlspecialchars($avatar) ?>" 
+                                    class="message-avatar" 
+                                    alt="Avatar de <?= htmlspecialchars($message['username']) ?>"
+                                >
 
                                 <div class="message-content">
 
@@ -77,7 +81,7 @@
 
 
         <!-- RIGHT COLUMN : CONVERSATION -->
-        <div class="conversation">
+        <div class="conversation" role="region" aria-label="Conversation">
 
             <?php if ($otherUser): ?>
 
@@ -91,7 +95,11 @@
 
                     <div class="conversation-header">
 
-                        <img src="<?= htmlspecialchars($avatar) ?>" class="conversation-avatar" alt="avatar">
+                        <img 
+                            src="<?= htmlspecialchars($avatar) ?>" 
+                            class="conversation-avatar" 
+                            alt="Avatar de <?= htmlspecialchars($otherUserData['username']) ?>"
+                        >
 
                         <span class="conversation-username">
                             <?= htmlspecialchars($otherUserData['username']) ?>
@@ -102,12 +110,12 @@
                 <?php endif; ?>
 
                 <?php if (empty($conversation)): ?>
-                    <p class="empty-state">
+                    <p class="empty-state" role="status">
                         Aucun message pour le moment. Commencez la conversation 👇
                     </p>
                 <?php endif; ?>
 
-                <div class="messages-wrapper">
+                <div class="messages-wrapper" role="log" aria-live="polite">
 
                     <?php foreach ($conversation as $msg): ?>
 
@@ -117,7 +125,7 @@
 
                         <div class="conversation-message <?= $isMe ? 'message-right' : 'message-left' ?>">
 
-                            <!-- ✅ TIMESTAMP FIRST (outside bubble) -->
+                            <!-- TIMESTAMP + AVATAR -->
                             <?php if (!$isMe): ?>
                                 <div class="message-meta-left">
                                     <img
@@ -125,7 +133,8 @@
                                                     ? $otherUserData['avatar']
                                                     : '/tomtroc/public/assets/avatars/default-avatar.jpg') ?>"
                                         class="message-avatar-small"
-                                        alt="avatar">
+                                        alt="Avatar de <?= htmlspecialchars($otherUserData['username']) ?>"
+                                    >
 
                                     <span class="message-time">
                                         <?= formatMessageTime($msg['created_at']) ?>
@@ -137,9 +146,12 @@
                                 </span>
                             <?php endif; ?>
 
-                            <!-- ✅ BUBBLE -->
+                            <!-- MESSAGE -->
                             <div class="message-bubble">
                                 <p class="message-text">
+                                    <span class="sr-only">
+                                        <?= $isMe ? 'Vous' : htmlspecialchars($otherUserData['username']) ?> :
+                                    </span>
                                     <?= htmlspecialchars($msg['content']) ?>
                                 </p>
                             </div>
@@ -152,12 +164,16 @@
 
 
                 <!-- MESSAGE INPUT -->
-                <form method="POST" class="message-form">
+                <form method="POST" class="message-form" aria-label="Envoyer un message">
+
+                    <label for="message-content" class="sr-only">Message</label>
 
                     <textarea
+                        id="message-content"
                         name="content"
                         placeholder="Tapez votre message ici"
-                        required></textarea>
+                        required
+                        aria-required="true"></textarea>
 
                     <button type="submit">
                         Envoyer
@@ -167,7 +183,7 @@
 
             <?php else: ?>
 
-                <p class="empty-state">
+                <p class="empty-state" role="status">
                     Sélectionnez une conversation
                 </p>
 
@@ -188,6 +204,5 @@
         }
     });
 </script>
-
 
 <?php require __DIR__ . '/../layout/footer.php'; ?>

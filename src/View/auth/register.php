@@ -9,18 +9,45 @@
 
             <div class="register-content">
 
-                <h1>Inscription</h1>
+                <h1 id="register-title">Inscription</h1>
 
-                <form method="POST" action="?route=register">
+                <?php if (!empty($error)): ?>
+                    <p class="form-error" role="alert">
+                        <?= htmlspecialchars($error) ?>
+                    </p>
+                <?php endif; ?>
+
+                <form method="POST" action="?route=register" aria-labelledby="register-title">
 
                     <label for="username">Pseudo</label>
-                    <input type="text" id="username" name="username" required>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        required 
+                        aria-required="true"
+                        autocomplete="username"
+                    >
 
                     <label for="email">Adresse email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        aria-required="true"
+                        autocomplete="email"
+                    >
 
                     <label for="password">Mot de passe</label>
-                    <input type="password" id="password" name="password" required>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        required 
+                        aria-required="true"
+                        autocomplete="new-password"
+                    >
 
                     <button type="submit" class="btn-primary">
                         S'inscrire
@@ -39,7 +66,7 @@
 
         <!-- RIGHT : IMAGE -->
         <div class="register-image">
-            <img src="/tomtroc/public/assets/register.png" alt="">
+            <img src="/tomtroc/public/assets/register.png" alt="" aria-hidden="true">
         </div>
 
     </div>

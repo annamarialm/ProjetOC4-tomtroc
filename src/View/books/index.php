@@ -9,10 +9,13 @@
 
             <h1 class="books-title">Nos livres à l’échange</h1>
 
-            <form method="GET" class="books-search">
+            <form method="GET" class="books-search" role="search" aria-label="Rechercher un livre">
                 <input type="hidden" name="route" value="books">
 
+                <label for="search-input" class="sr-only">Rechercher un livre</label>
+
                 <input
+                    id="search-input"
                     type="text"
                     name="search"
                     placeholder="Rechercher un livre"
@@ -36,7 +39,10 @@
                                 : '/tomtroc/public/assets/books/default.jpg';
                             ?>
 
-                            <img src="<?= htmlspecialchars($image) ?>" alt="Couverture du livre">
+                            <img 
+                                src="<?= htmlspecialchars($image) ?>" 
+                                alt="Couverture de <?= htmlspecialchars($book['title']) ?> par <?= htmlspecialchars($book['author']) ?>"
+                            >
                         </div>
 
                         <div class="book-card-info">

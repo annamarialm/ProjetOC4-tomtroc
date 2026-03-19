@@ -4,20 +4,29 @@
 
     <div class="container">
 
-        <a href="?route=account" class="edit-book-back">← retour</a>
+        <a href="?route=account" class="edit-book-back" aria-label="Retour à votre compte">← retour</a>
 
-        <h1 class="edit-book-title">Ajouter un livre</h1>
+        <h1 id="create-book-title" class="edit-book-title">Ajouter un livre</h1>
 
         <div class="edit-book-card">
 
-            <form method="POST" action="?route=create-book" enctype="multipart/form-data" class="edit-book-layout">
+            <form 
+                method="POST" 
+                action="?route=create-book" 
+                enctype="multipart/form-data" 
+                class="edit-book-layout"
+                aria-labelledby="create-book-title"
+            >
 
                 <!-- LEFT SIDE : IMAGE -->
                 <div class="edit-book-image">
 
                     <label>Photo</label>
 
-                    <img src="/tomtroc/public/assets/books/default.jpg" alt="Couverture du livre">
+                    <img 
+                        src="/tomtroc/public/assets/books/default.jpg" 
+                        alt="Couverture par défaut du livre"
+                    >
 
                     <label for="image" class="edit-photo-link">Ajouter une photo</label>
 
@@ -41,7 +50,9 @@
                             type="text"
                             name="title"
                             id="title"
-                            required>
+                            required
+                            aria-required="true"
+                            autocomplete="off">
                     </div>
 
 
@@ -52,7 +63,9 @@
                             type="text"
                             name="author"
                             id="author"
-                            required>
+                            required
+                            aria-required="true"
+                            autocomplete="name">
                     </div>
 
 
