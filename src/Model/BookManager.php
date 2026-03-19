@@ -13,6 +13,8 @@ class BookManager
 
     public function findByUserId($userId)
     {
+        $userId = (int) $userId;
+
         $sql = "SELECT * FROM books WHERE user_id = :user_id";
 
         $stmt = $this->db->prepare($sql);
@@ -23,6 +25,8 @@ class BookManager
 
     public function createBook($userId, $title, $author, $description, $status, $imagePath)
     {
+        $userId = (int) $userId;
+
         $sql = "INSERT INTO books (user_id, title, author, description, status, image)
                 VALUES (:user_id, :title, :author, :description, :status, :image)";
 
@@ -40,6 +44,8 @@ class BookManager
 
     public function findById($id)
     {
+        $id = (int) $id;
+
         $sql = "SELECT * FROM books WHERE id = :id LIMIT 1";
 
         $stmt = $this->db->prepare($sql);
@@ -50,7 +56,9 @@ class BookManager
 
     public function updateBook($id, $title, $author, $description, $status, $imagePath = null)
     {
-        if ($imagePath) {
+        $id = (int) $id;
+
+        if (!empty($imagePath)) {
 
             $sql = "UPDATE books
                     SET title = :title,
@@ -96,6 +104,8 @@ class BookManager
 
     public function deleteBook($id)
     {
+        $id = (int) $id;
+
         $sql = "DELETE FROM books WHERE id = :id";
 
         $stmt = $this->db->prepare($sql);
@@ -118,6 +128,8 @@ class BookManager
 
     public function findBookWithOwner($id)
     {
+        $id = (int) $id;
+
         $sql = "SELECT books.*, users.username, users.avatar
                 FROM books
                 JOIN users ON books.user_id = users.id

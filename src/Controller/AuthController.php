@@ -8,8 +8,8 @@ class AuthController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $username = $_POST['username'] ?? '';
-            $email = $_POST['email'] ?? '';
+            $username = trim($_POST['username'] ?? '');
+            $email = trim($_POST['email'] ?? '');
             $password = $_POST['password'] ?? '';
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -17,18 +17,18 @@ class AuthController
             $userManager = new UserManager();
             $userManager->createUser($username, $email, $hashedPassword);
 
-            // ✅ Redirect instead of echo
             header('Location: ?route=login&registered=1');
             exit;
         }
 
         require __DIR__ . '/../View/auth/register.php';
     }
+
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $email = $_POST['email'] ?? '';
+            $email = trim($_POST['email'] ?? '');
             $password = $_POST['password'] ?? '';
 
             $userManager = new UserManager();
@@ -42,7 +42,8 @@ class AuthController
                 exit;
             }
 
-            echo "Email ou mot de passe incorrect";
+            // ✅ Safe error handling (no direct echo)
+            $error = "Email ou mot de passe incorrect";
         }
 
         require __DIR__ . '/../View/auth/login.php';

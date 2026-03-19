@@ -12,39 +12,44 @@ class MessageManager
     }
 
     // 📥 Inbox (latest message per conversation)
-public function getInbox($userId)
-{
-    $sql = "
-    SELECT 
-        m.*, 
-        u.username,
-        u.avatar
-    FROM messages m
-    JOIN users u 
-        ON u.id = CASE
-            WHEN m.sender_id = :user_id THEN m.receiver_id
-            ELSE m.sender_id
-        END
-    WHERE m.id IN (
-        SELECT MAX(id)
-        FROM messages
-        WHERE sender_id = :user_id OR receiver_id = :user_id
-        GROUP BY
-            LEAST(sender_id, receiver_id),
-            GREATEST(sender_id, receiver_id)
-    )
-    ORDER BY m.created_at DESC
-    ";
+    public function getInbox($userId)
+    {
+        $userId = (int) $userId;
 
-    $stmt = $this->db->prepare($sql);
-    $stmt->execute(['user_id' => $userId]);
+        $sql = "
+        SELECT 
+            m.*, 
+            u.username,
+            u.avatar
+        FROM messages m
+        JOIN users u 
+            ON u.id = CASE
+                WHEN m.sender_id = :user_id THEN m.receiver_id
+                ELSE m.sender_id
+            END
+        WHERE m.id IN (
+            SELECT MAX(id)
+            FROM messages
+            WHERE sender_id = :user_id OR receiver_id = :user_id
+            GROUP BY
+                LEAST(sender_id, receiver_id),
+                GREATEST(sender_id, receiver_id)
+        )
+        ORDER BY m.created_at DESC
+        ";
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['user_id' => $userId]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     // 💬 Full conversation
     public function getConversation($userId, $otherUserId)
     {
+        $userId = (int) $userId;
+        $otherUserId = (int) $otherUserId;
+
         $sql = "
         SELECT m.*, u.username
         FROM messages m
@@ -68,9 +73,11 @@ public function getInbox($userId)
     // ✉️ Send message
     public function sendMessage($senderId, $receiverId, $content)
     {
+        $senderId = (int) $senderId;
+        $receiverId = (int) $receiverId;
         $content = trim($content);
 
-        if (empty($content) || $senderId == $receiverId) {
+        if (empty($content) || $senderId === $receiverId) {
             return;
         }
 
@@ -91,6 +98,9 @@ public function getInbox($userId)
     // 🚀 (optional future feature)
     public function markAsRead($userId, $otherUserId)
     {
+        $userId = (int) $userId;
+        $otherUserId = (int) $otherUserId;
+
         $sql = "
         UPDATE messages
         SET is_read = TRUE

@@ -47,7 +47,10 @@ class UserManager
 
     public function updateProfile($id, $email, $username, $password, $avatar)
     {
-        if ($password) {
+        // ✅ Ensure ID is always an integer (extra safety)
+        $id = (int) $id;
+
+        if (!empty($password)) {
             $password = password_hash($password, PASSWORD_DEFAULT);
 
             $sql = "UPDATE users
