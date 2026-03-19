@@ -12,9 +12,9 @@ class MessageManager
     }
 
     // 📥 Inbox (latest message per conversation)
-    public function getInbox($userId)
-    {
-        $sql = "
+public function getInbox($userId)
+{
+    $sql = "
     SELECT 
         m.*, 
         u.username,
@@ -36,11 +36,11 @@ class MessageManager
     ORDER BY m.created_at DESC
     ";
 
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute(['user_id' => $userId]);
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute(['user_id' => $userId]);
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
     // 💬 Full conversation
     public function getConversation($userId, $otherUserId)

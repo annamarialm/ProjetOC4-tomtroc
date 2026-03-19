@@ -164,5 +164,14 @@
 
 </section>
 
+<script>
+window.addEventListener("load", function () {
+    const container = document.querySelector(".messages-wrapper");
+
+    if (container) {
+        container.scrollTop = container.scrollHeight;
+    }
+});
+</script>
 
 <?php require __DIR__ . '/../layout/footer.php'; ?>
