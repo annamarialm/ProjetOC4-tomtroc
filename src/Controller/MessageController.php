@@ -69,8 +69,7 @@ class MessageController
 
             $otherUserData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // (Optional next step)
-            // $messageManager->markAsRead($userId, $otherUser);
+           
         }
 
         require __DIR__ . '/../View/messages/index.php';

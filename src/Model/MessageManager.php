@@ -94,23 +94,4 @@ class MessageManager
             'content' => $content
         ]);
     }
-
-    // 🚀 (optional future feature)
-    public function markAsRead($userId, $otherUserId)
-    {
-        $userId = (int) $userId;
-        $otherUserId = (int) $otherUserId;
-
-        $sql = "
-        UPDATE messages
-        SET is_read = TRUE
-        WHERE receiver_id = :user AND sender_id = :other
-        ";
-
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([
-            'user' => $userId,
-            'other' => $otherUserId
-        ]);
-    }
 }
