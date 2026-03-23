@@ -36,6 +36,16 @@ L’objectif est de concevoir une application structurée, maintenable et proche
 
 ---
 
+## Compétences mises en œuvre
+- Conception d’une application web complète en PHP  
+- Implémentation d’une architecture MVC  
+- Gestion de l’authentification utilisateur  
+- Manipulation de données via PDO  
+- Structuration d’un projet maintenable  
+- Sécurisation des données (hash des mots de passe, requêtes préparées)
+
+```
+
 ## Structure du projet
 
 ```
@@ -143,6 +153,16 @@ The goal is to build a structured and maintainable application, close to real-wo
 * PDO for database access
 * HTML & CSS
 * Git / GitHub for version control
+
+---
+
+## Skills Demonstrated
+- Building a full PHP web application  
+- Implementing MVC architecture  
+- User authentication handling  
+- Database interaction using PDO  
+- Structuring a maintainable application  
+- Data security (password hashing, prepared statements)  
 
 ---
 
