@@ -76,7 +76,7 @@ tomtroc/
 1. Cloner le dépôt :
 
 ```
-git clone https://github.com/annamarialm-creator/tomtroc.git
+git clone https://github.com/annamarialm/ProjetOC4-tomtroc.git
 ```
 
 2. Placer le projet dans le dossier du serveur web (par exemple `htdocs` si vous utilisez **XAMPP**).
@@ -196,7 +196,7 @@ tomtroc/
 1. Clone the repository
 
 ```
-git clone https://github.com/annamarialm-creator/tomtroc.git
+git clone https://github.com/annamarialm/ProjetOC4-tomtroc.git
 ```
 
 2. Place the project in your web server directory (for example `htdocs` if using XAMPP)
