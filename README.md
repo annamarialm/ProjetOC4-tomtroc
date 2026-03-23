@@ -5,22 +5,23 @@ EN [English version](#english-version)
 
 # TomTroc (FR)
 
-TomTroc est une application web développée en PHP permettant de mettre en relation des lecteurs afin qu’ils puissent échanger des livres.
+## Description
+TomTroc est une application web développée en PHP permettant de mettre en relation des utilisateurs afin qu’ils puissent échanger des livres.
 
-Ce projet a été réalisé dans le cadre d’un **diplôme de développement Full-Stack**.
-Il s’agit d’un **MVP (Minimal Viable Product)** dont l’objectif est d’implémenter les fonctionnalités principales d’une plateforme d’échange de livres.
+Ce projet est un MVP (Minimal Viable Product) mettant en œuvre une architecture MVC et une logique backend complète : gestion des utilisateurs, authentification, gestion de données et interactions entre utilisateurs.
+
+L’objectif est de concevoir une application structurée, maintenable et proche d’un environnement réel de développement.
 
 ---
 
 ## Fonctionnalités
 
-* Inscription des utilisateurs
-* Connexion et déconnexion
-* Page "Mon compte"
-* Bibliothèque personnelle de livres
-* Consultation des livres disponibles à l’échange
-* Page de détail d’un livre
-* Messagerie entre utilisateurs (prévue dans une version ultérieure)
+- Inscription et authentification des utilisateurs  
+- Gestion du profil utilisateur ("Mon compte")  
+- Gestion d’une bibliothèque personnelle de livres  
+- Consultation des livres disponibles à l’échange  
+- Affichage détaillé d’un livre  
+- (Prévu) Messagerie entre utilisateurs  
 
 ---
 
@@ -53,7 +54,11 @@ tomtroc/
 │
 └── README.md
 ```
-
+## Architecture et logique
+- Architecture MVC (Model / View / Controller)  
+- Gestion des requêtes HTTP côté serveur  
+- Séparation des responsabilités (routing, logique métier, affichage)  
+- Interaction avec la base de données via PDO  
 ---
 
 ## Installation
@@ -109,10 +114,12 @@ Projet réalisé dans le cadre d’une formation en développement **Full-Stack*
 
 # TomTroc (EN)
 
-TomTroc is a PHP web application that allows readers to exchange books with other users.
+## Description
+TomTroc is a PHP web application that allows users to exchange books with each other.
 
-This project was developed as part of a **Full-Stack Development diploma**.
-It is a **Minimal Viable Product (MVP)** designed to implement the core functionality of a book exchange platform.
+This project is a Minimal Viable Product (MVP) implementing a full backend logic using MVC architecture: user management, authentication, data handling, and user interactions.
+
+The goal is to build a structured and maintainable application, close to real-world development practices.
 
 ---
 
@@ -157,7 +164,11 @@ tomtroc/
 │
 └── README.md
 ```
-
+## Architecture & Backend Logic
+- MVC architecture (Model / View / Controller)  
+- Server-side request handling  
+- Separation of concerns (routing, business logic, presentation)  
+- Database interaction using PDO  
 ---
 
 ## Installation
