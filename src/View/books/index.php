@@ -24,6 +24,8 @@
 
         </div>
 
+        <h2 class="sr-only">Liste des livres</h2>
+
         <div class="books-grid">
 
             <?php foreach ($books as $book): ?>
@@ -44,6 +46,7 @@
                                 alt="Couverture de <?= htmlspecialchars($book['title']) ?> par <?= htmlspecialchars($book['author']) ?>"
                             >
                         </div>
+                        
 
                         <div class="book-card-info">
 

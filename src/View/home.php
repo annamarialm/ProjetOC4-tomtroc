@@ -52,10 +52,9 @@
                                     : '/tomtroc/public/assets/books/default.jpg';
                                 ?>
 
-                                <img 
-                                    src="<?= htmlspecialchars($image) ?>" 
-                                    alt="Couverture de <?= htmlspecialchars($book['title']) ?> par <?= htmlspecialchars($book['author']) ?>"
-                                >
+                                <img
+                                    src="<?= htmlspecialchars($image) ?>"
+                                    alt="Couverture de <?= htmlspecialchars($book['title']) ?> par <?= htmlspecialchars($book['author']) ?>">
 
                             </div>
 
@@ -132,9 +131,9 @@
 
     </section>
 
-    <section class="values-image">
+    <div class="values-image">
         <img src="/tomtroc/public/assets/values.png" alt="" aria-hidden="true">
-    </section>
+    </div>
 
     <div class="container">
 

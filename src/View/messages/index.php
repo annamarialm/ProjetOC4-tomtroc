@@ -28,7 +28,7 @@
                         : '/tomtroc/public/assets/avatars/default-avatar.jpg';
                     ?>
 
-                    <div class="message-item" role="listitem">
+                    <div class="message-item">
 
                         <a href="?route=messages&user=<?= $otherUserId ?>"
                             class="message-link <?= ($otherUser == $otherUserId) ? 'active' : '' ?>">
@@ -172,8 +172,7 @@
                         id="message-content"
                         name="content"
                         placeholder="Tapez votre message ici"
-                        required
-                        aria-required="true"></textarea>
+                        required></textarea>
 
                     <button type="submit">
                         Envoyer

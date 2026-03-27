@@ -20,7 +20,7 @@
 
                 <img
                     src="<?= htmlspecialchars($avatar) ?>"
-                    alt="Photo de profil de <?= htmlspecialchars($user['username']) ?>"
+                    alt="Avatar de <?= htmlspecialchars($user['username']) ?>"
                     class="profile-avatar">
 
                 <input
