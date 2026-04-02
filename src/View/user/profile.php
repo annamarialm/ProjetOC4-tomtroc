@@ -33,20 +33,19 @@
             </div>
 
             <div class="library-count">
-                <img 
-                    src="/tomtroc/public/assets/book-icon.svg" 
-                    class="library-icon" 
-                    alt="" 
+                <img
+                    src="/tomtroc/public/assets/book-icon.svg"
+                    class="library-icon"
+                    alt=""
                     aria-hidden="true">
                 <span><?= count($books) ?> livres</span>
             </div>
 
             <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != $user['id']): ?>
-                <a 
-                    href="?route=messages&user=<?= $user['id'] ?>" 
+                <a
+                    href="?route=messages&user=<?= $user['id'] ?>"
                     class="btn-outline"
-                    aria-label="Envoyer un message à <?= htmlspecialchars($user['username']) ?>"
-                >
+                    aria-label="Envoyer un message à <?= htmlspecialchars($user['username']) ?>">
                     Écrire un message
                 </a>
             <?php endif; ?>
@@ -102,9 +101,14 @@
                             </td>
 
                             <td class="book-title">
-                                <div class="title-text">
-                                    <?= htmlspecialchars($book['title']) ?>
-                                </div>
+                                <a
+                                    href="?route=book&id=<?= $book['id'] ?>&from=profile&user=<?= $user['id'] ?>"
+                                    class="book-title-link"
+                                    aria-label="Voir le livre <?= htmlspecialchars($book['title']) ?>">
+                                    <div class="title-text">
+                                        <?= htmlspecialchars($book['title']) ?>
+                                    </div>
+                                </a>
                             </td>
 
                             <td class="book-author-cell">

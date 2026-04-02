@@ -3,9 +3,31 @@
 <section class="book-page">
 
     <div class="book-breadcrumb">
-        <a href="?route=books">Nos livres</a>
+
+        <?php
+        $from = $_GET['from'] ?? 'books';
+        ?>
+
+        <?php if ($from === 'account'): ?>
+            <a href="?route=account">Mon compte</a>
+
+        <?php elseif ($from === 'home'): ?>
+            <a href="?route=home">Accueil</a>
+
+        <?php elseif ($from === 'profile'): ?>
+            <a href="?route=profile&id=<?= $book['user_id'] ?>">
+                Profil de <?= htmlspecialchars($book['username']) ?>
+            </a>
+
+        <?php else: ?>
+            <a href="?route=books">Nos livres</a>
+
+        <?php endif; ?>
+
         <span>></span>
+
         <?= htmlspecialchars($book['title']) ?>
+
     </div>
 
     <div class="book-layout">
@@ -19,10 +41,9 @@
                 : '/tomtroc/public/assets/books/default.jpg';
             ?>
 
-            <img 
-                src="<?= htmlspecialchars($image) ?>" 
-                alt="Couverture de <?= htmlspecialchars($book['title']) ?> par <?= htmlspecialchars($book['author']) ?>"
-            >
+            <img
+                src="<?= htmlspecialchars($image) ?>"
+                alt="Couverture de <?= htmlspecialchars($book['title']) ?> par <?= htmlspecialchars($book['author']) ?>">
 
         </div>
 
@@ -58,28 +79,25 @@
                         : '/tomtroc/public/assets/avatars/default-avatar.jpg';
                     ?>
 
-                    <img 
-                        src="<?= htmlspecialchars($avatar) ?>" 
-                        class="owner-avatar" 
-                        alt="Avatar de <?= htmlspecialchars($book['username']) ?>"
-                    >
+                    <img
+                        src="<?= htmlspecialchars($avatar) ?>"
+                        class="owner-avatar"
+                        alt="Avatar de <?= htmlspecialchars($book['username']) ?>">
 
-                    <a 
-                        href="?route=profile&id=<?= $book['user_id'] ?>" 
+                    <a
+                        href="?route=profile&id=<?= $book['user_id'] ?>"
                         class="owner-name"
-                        aria-label="Voir le profil de <?= htmlspecialchars($book['username']) ?>"
-                    >
+                        aria-label="Voir le profil de <?= htmlspecialchars($book['username']) ?>">
                         <?= htmlspecialchars($book['username']) ?>
                     </a>
 
                 </div>
 
                 <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != $book['user_id']): ?>
-                    <a 
-                        href="?route=messages&user=<?= $book['user_id'] ?>" 
+                    <a
+                        href="?route=messages&user=<?= $book['user_id'] ?>"
                         class="btn-primary book-message"
-                        aria-label="Envoyer un message à <?= htmlspecialchars($book['username']) ?>"
-                    >
+                        aria-label="Envoyer un message à <?= htmlspecialchars($book['username']) ?>">
                         Envoyer un message
                     </a>
                 <?php endif; ?>

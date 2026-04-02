@@ -42,8 +42,7 @@
 
                     <article class="book-card">
 
-                        <a href="?route=book&id=<?= $book['id'] ?>" class="book-card-link">
-
+                        <a href="?route=book&id=<?= $book['id'] ?>&from=home" class="book-card-link">
                             <div class="book-card-image">
 
                                 <?php

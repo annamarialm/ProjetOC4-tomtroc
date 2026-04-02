@@ -155,7 +155,7 @@
 
                         <td class="book-title-cell">
                             <a 
-                                href="?route=book&id=<?= $book['id'] ?>" 
+                                href="?route=book&id=<?= $book['id'] ?>&from=account"  
                                 class="book-title-link"
                                 aria-label="Voir le livre <?= htmlspecialchars($book['title']) ?>"
                             >
