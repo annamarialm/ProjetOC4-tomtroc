@@ -74,7 +74,7 @@
 
                 </div>
 
-                <?php if ($_SESSION['user_id'] != $book['user_id']): ?>
+                <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != $book['user_id']): ?>
                     <a 
                         href="?route=messages&user=<?= $book['user_id'] ?>" 
                         class="btn-primary book-message"
