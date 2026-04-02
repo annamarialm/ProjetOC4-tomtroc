@@ -28,8 +28,10 @@ class AccountController
             exit;
         }
 
+        $userId = $_SESSION['user_id'];
+
         $userManager = new UserManager();
-        $user = $userManager->findById($_SESSION['user_id']);
+        $user = $userManager->findById($userId);
 
         $email = $_POST['email'] ?? $user['email'];
         $username = $_POST['username'] ?? $user['username'];
@@ -40,7 +42,7 @@ class AccountController
         // Handle avatar upload
         if (!empty($_FILES['avatar']['name'])) {
 
-            // Delete old avatar if it exists and is not the default
+            // 🗑️ Delete old avatar if not default
             if (!empty($user['avatar']) && strpos($user['avatar'], 'default-avatar.jpg') === false) {
 
                 $oldFilePath = __DIR__ . '/../../public' . $user['avatar'];
@@ -50,17 +52,24 @@ class AccountController
                 }
             }
 
-            $uploadDir = __DIR__ . '/../../public/assets/avatars/';
+            // 📁 User-specific folder
+            $uploadDir = __DIR__ . '/../../public/images/avatars/' . $userId . '/';
+
+            // 📁 Create folder if needed
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
             $filename = uniqid() . '_' . basename($_FILES['avatar']['name']);
             $targetPath = $uploadDir . $filename;
 
             if (move_uploaded_file($_FILES['avatar']['tmp_name'], $targetPath)) {
-                $avatarPath = '/tomtroc/public/assets/avatars/' . $filename;
+                $avatarPath = '/tomtroc/public/images/avatars/' . $userId . '/' . $filename;
             }
         }
 
         $userManager->updateProfile(
-            $_SESSION['user_id'],
+            $userId,
             $email,
             $username,
             $password,

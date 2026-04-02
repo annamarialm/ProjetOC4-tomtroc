@@ -11,6 +11,8 @@ class BookController
             exit;
         }
 
+        $userId = $_SESSION['user_id'];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $title = $_POST['title'] ?? '';
@@ -22,20 +24,26 @@ class BookController
 
             if (!empty($_FILES['image']['name'])) {
 
-                $uploadDir = __DIR__ . '/../../public/assets/books/';
+                // 📁 User-specific folder
+                $uploadDir = __DIR__ . '/../../public/images/books/' . $userId . '/';
+
+                // 📁 Create folder if it doesn't exist
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0777, true);
+                }
 
                 $filename = uniqid() . '_' . basename($_FILES['image']['name']);
 
                 $targetPath = $uploadDir . $filename;
 
-                move_uploaded_file($_FILES['image']['tmp_name'], $targetPath);
-
-                $imagePath = '/tomtroc/public/assets/books/' . $filename;
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
+                    $imagePath = '/tomtroc/public/images/books/' . $userId . '/' . $filename;
+                }
             }
 
             $bookManager = new BookManager();
             $bookManager->createBook(
-                $_SESSION['user_id'],
+                $userId,
                 $title,
                 $author,
                 $description,
@@ -57,6 +65,8 @@ class BookController
             exit;
         }
 
+        $userId = $_SESSION['user_id'];
+
         $bookManager = new BookManager();
 
         $id = $_GET['id'] ?? null;
@@ -77,15 +87,19 @@ class BookController
 
             if (!empty($_FILES['image']['name'])) {
 
-                $uploadDir = __DIR__ . '/../../public/assets/books/';
+                $uploadDir = __DIR__ . '/../../public/images/books/' . $userId . '/';
+
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0777, true);
+                }
 
                 $filename = uniqid() . '_' . basename($_FILES['image']['name']);
 
                 $targetPath = $uploadDir . $filename;
 
-                move_uploaded_file($_FILES['image']['tmp_name'], $targetPath);
-
-                $imagePath = '/tomtroc/public/assets/books/' . $filename;
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
+                    $imagePath = '/tomtroc/public/images/books/' . $userId . '/' . $filename;
+                }
             }
 
             $bookManager->updateBook(
