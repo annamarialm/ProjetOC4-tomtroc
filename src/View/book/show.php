@@ -93,13 +93,24 @@
 
                 </div>
 
-                <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != $book['user_id']): ?>
+                <?php if (!isset($_SESSION['user_id'])): ?>
+
+                    <a
+                        href="?route=login"
+                        class="btn-primary book-message"
+                        aria-label="Se connecter pour envoyer un message">
+                        Envoyer un message
+                    </a>
+
+                <?php elseif ($_SESSION['user_id'] != $book['user_id']): ?>
+
                     <a
                         href="?route=messages&user=<?= $book['user_id'] ?>"
                         class="btn-primary book-message"
                         aria-label="Envoyer un message à <?= htmlspecialchars($book['username']) ?>">
                         Envoyer un message
                     </a>
+
                 <?php endif; ?>
 
             </div>

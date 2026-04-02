@@ -41,13 +41,24 @@
                 <span><?= count($books) ?> livres</span>
             </div>
 
-            <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != $user['id']): ?>
+            <?php if (!isset($_SESSION['user_id'])): ?>
+
+                <a
+                    href="?route=login"
+                    class="btn-outline"
+                    aria-label="Se connecter pour envoyer un message à <?= htmlspecialchars($user['username']) ?>">
+                    Écrire un message
+                </a>
+
+            <?php elseif ($_SESSION['user_id'] != $user['id']): ?>
+
                 <a
                     href="?route=messages&user=<?= $user['id'] ?>"
                     class="btn-outline"
                     aria-label="Envoyer un message à <?= htmlspecialchars($user['username']) ?>">
                     Écrire un message
                 </a>
+
             <?php endif; ?>
 
         </div>
