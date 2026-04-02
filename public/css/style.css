@@ -2038,3 +2038,13 @@ footer {
     outline-offset: 2px;
     background-color: rgba(0, 172, 102, 0.12);
 }
+
+.form-group input {
+    padding: 10px;
+    line-height: normal;
+}
+
+
+.hidden {
+    display: none !important;
+}

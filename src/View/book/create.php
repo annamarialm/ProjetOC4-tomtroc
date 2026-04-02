@@ -35,7 +35,7 @@
                         name="image"
                         id="image"
                         accept="image/*"
-                        style="display:none;">
+                        class="hidden">
 
                 </div>
 

@@ -28,7 +28,7 @@
                     name="avatar"
                     id="avatar-upload"
                     accept="image/*"
-                    style="display:none;">
+                    class="hidden">
 
                 <label for="avatar-upload" class="avatar-edit-btn">
                     modifier

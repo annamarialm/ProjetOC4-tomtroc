@@ -120,6 +120,15 @@ http://localhost/tomtroc/public/
 
 ---
 
+## 🔑 Compte de démonstration
+
+Vous pouvez vous connecter avec les identifiants suivants :
+
+Email : nathalie.dupont@example.com  
+Mot de passe : tomtroc123
+
+---
+
 ## 🔐 Sécurité
 
 - Mots de passe hashés (`password_hash`)  
@@ -259,6 +268,15 @@ Run Apache + MySQL (XAMPP)
 
 http://localhost/tomtroc/public/
 
+
+---
+
+## 🔑 Demo Account
+
+You can log in using the following credentials:
+
+Email: nathalie.dupont@example.com  
+Password: tomtroc123
 
 ---
 
