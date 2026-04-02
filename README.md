@@ -1,236 +1,277 @@
-FR [Version française](#version-française)  
-EN [English version](#english-version)
+[🇫🇷 Version française](#version-française)  
+[🇬🇧 English version](#english-version)
 
-<a id="tomtroc-fr"></a>
+---
 
-# TomTroc (FR)
+<a id="version-française"></a>
+
+# 📚 TomTroc (FR)
 
 ## Description
 TomTroc est une application web développée en PHP permettant de mettre en relation des utilisateurs afin qu’ils puissent échanger des livres.
 
-Ce projet est un MVP (Minimal Viable Product) mettant en œuvre une architecture MVC et une logique backend complète : gestion des utilisateurs, authentification, gestion de données et interactions entre utilisateurs.
+Ce projet est un MVP (Minimal Viable Product) construit avec une architecture MVC personnalisée, mettant en œuvre une logique backend complète : gestion des utilisateurs, authentification, gestion des livres et messagerie entre utilisateurs.
 
 L’objectif est de concevoir une application structurée, maintenable et proche d’un environnement réel de développement.
 
 ---
 
-## Fonctionnalités
+## 🚀 Fonctionnalités
 
-- Inscription et authentification des utilisateurs  
-- Gestion du profil utilisateur ("Mon compte")  
-- Gestion d’une bibliothèque personnelle de livres  
-- Consultation des livres disponibles à l’échange  
-- Affichage détaillé d’un livre  
-- (Prévu) Messagerie entre utilisateurs  
+### Utilisateur
+- Inscription et authentification sécurisée  
+- Gestion du profil utilisateur  
+- Upload d’avatar  
+
+### Livres
+- Ajout, modification et suppression de livres (CRUD)  
+- Consultation des livres disponibles  
+- Recherche par titre  
+- Page détail d’un livre  
+
+### Messagerie
+- Boîte de réception (une conversation par utilisateur)  
+- Vue conversation  
+- Envoi de messages  
+- Affichage des timestamps et aperçus  
 
 ---
 
-## Technologies utilisées
+## 🛠 Technologies utilisées
 
-* **PHP** (programmation orientée objet)
-* **Architecture MVC**
-* **MySQL / MariaDB**
-* **PDO** pour la communication avec la base de données
-* **HTML / CSS**
-* **Git et GitHub** pour la gestion de version
+- PHP (Programmation Orientée Objet)  
+- Architecture MVC (custom)  
+- MySQL / MariaDB  
+- PDO (requêtes préparées)  
+- HTML5 / CSS3  
+- Git / GitHub  
 
 ---
 
-## Compétences mises en œuvre
-- Conception d’une application web complète en PHP  
+## 🧠 Compétences mises en œuvre
+
+- Conception d’une application web complète  
 - Implémentation d’une architecture MVC  
-- Gestion de l’authentification utilisateur  
-- Manipulation de données via PDO  
-- Structuration d’un projet maintenable  
-- Sécurisation des données (hash des mots de passe, requêtes préparées)
+- Gestion de l’authentification (sessions, password_hash)  
+- Manipulation de données avec PDO  
+- Sécurisation des données (SQL injection, XSS)  
+- Conception d’une base de données relationnelle (foreign keys)  
 
-```
+---
 
-## Structure du projet
+## 🏗 Structure du projet
 
-```
+
 tomtroc/
 │
 ├── public/
-│   └── index.php
+│ └── index.php
 │
 ├── src/
-│   ├── Controller/
-│   ├── Model/
-│   └── View/
+│ ├── Controller/
+│ ├── Model/
+│ └── View/
 │
 ├── config/
-│   └── database.php
+│ └── database.php
 │
+├── database.sql
 └── README.md
-```
-## Architecture et logique
-- Architecture MVC (Model / View / Controller)  
-- Gestion des requêtes HTTP côté serveur  
-- Séparation des responsabilités (routing, logique métier, affichage)  
-- Interaction avec la base de données via PDO  
+
+
 ---
 
-## Installation
+## ⚙️ Installation
 
-1. Cloner le dépôt :
+### 1. Cloner le projet
 
-```
-git clone https://github.com/annamarialm/ProjetOC4-tomtroc.git
-```
+git clone https://github.com/annamarialm-creator/tomtroc.git
 
-2. Placer le projet dans le dossier du serveur web (par exemple `htdocs` si vous utilisez **XAMPP**).
 
-3. Créer une base de données nommée :
+### 2. Installer le projet
+Placez le dossier dans votre serveur local (ex: `htdocs` avec XAMPP)
 
-```
+### 3. Créer la base de données
+Dans phpMyAdmin :
+
+- Créez une base nommée :
+
 tomtroc
-```
 
-4. Configurer la connexion à la base de données dans le fichier :
 
-```
+- Importez le fichier :
+
+database.sql
+
+
+### 4. Configurer la connexion
+Modifier :
+
 config/database.php
-```
 
-5. Démarrer **Apache** et **MySQL** dans XAMPP.
 
-6. Accéder au projet dans votre navigateur :
+### 5. Lancer le serveur
+Démarrer Apache et MySQL (XAMPP)
 
-```
+### 6. Accéder au projet
+
 http://localhost/tomtroc/public/
-```
+
 
 ---
 
-## Sécurité
+## 🔐 Sécurité
 
-* Les mots de passe sont sécurisés grâce à la fonction `password_hash()`
-* Les requêtes SQL utilisent des **requêtes préparées PDO** afin d’éviter les injections SQL
+- Mots de passe hashés (`password_hash`)  
+- Requêtes préparées (PDO)  
+- Protection XSS avec `htmlspecialchars`  
+- Intégrité des données via foreign keys  
+
+---
+
+## 📌 Remarques techniques
+
+- Architecture MVC respectée (séparation claire des responsabilités)  
+- Aucune logique SQL dans les vues  
+- Aucun HTML dans les contrôleurs  
+- Validation HTML (W3C) et accessibilité (WCAG) prises en compte  
 
 ---
 
-## Auteur
+## 👩‍💻 Auteur
 
-Projet réalisé dans le cadre d’une formation en développement **Full-Stack** par Anna Maria LOWE MANOLIS.
+Projet réalisé dans le cadre d’une formation en développement **Full-Stack**  
+par **Anna Maria LOWE MANOLIS**
 
----
----
----
----
 ---
 
-<a id="tomtroc-en"></a>
+---
 
-# TomTroc (EN)
+<a id="english-version"></a>
+
+# 📚 TomTroc (EN)
 
 ## Description
-TomTroc is a PHP web application that allows users to exchange books with each other.
+TomTroc is a PHP web application that allows users to exchange books.
 
-This project is a Minimal Viable Product (MVP) implementing a full backend logic using MVC architecture: user management, authentication, data handling, and user interactions.
+This project is a Minimal Viable Product (MVP) built using a custom MVC architecture, implementing full backend logic including authentication, book management, and a messaging system.
 
-The goal is to build a structured and maintainable application, close to real-world development practices.
-
----
-
-## Features
-
-* User registration
-* User login and logout
-* User account page
-* Personal book library
-* Browse books available for exchange
-* View book details
-* Messaging between users (planned)
+The goal is to build a structured and maintainable application aligned with real-world development practices.
 
 ---
 
-## Technologies Used
+## 🚀 Features
 
-* PHP (Object-Oriented Programming)
-* MVC architecture
-* MySQL / MariaDB
-* PDO for database access
-* HTML & CSS
-* Git / GitHub for version control
+### User
+- Secure registration & authentication  
+- Profile management  
+- Avatar upload  
+
+### Books
+- CRUD operations (create, edit, delete)  
+- Browse available books  
+- Search by title  
+- Book detail page  
+
+### Messaging
+- Inbox (one conversation per user)  
+- Conversation view  
+- Send messages  
+- Timestamp & preview display  
 
 ---
 
-## Skills Demonstrated
-- Building a full PHP web application  
-- Implementing MVC architecture  
-- User authentication handling  
-- Database interaction using PDO  
-- Structuring a maintainable application  
-- Data security (password hashing, prepared statements)  
+## 🛠 Tech Stack
+
+- PHP (OOP)  
+- Custom MVC architecture  
+- MySQL / MariaDB  
+- PDO (prepared statements)  
+- HTML5 / CSS3  
+- Git / GitHub  
 
 ---
 
-## Project Structure
+## 🧠 Skills Demonstrated
 
-```
+- Full-stack application development  
+- MVC architecture implementation  
+- Authentication handling  
+- Secure database interaction (PDO)  
+- Data security (XSS, SQL injection)  
+- Relational database design (foreign keys)  
+
+---
+
+## 🏗 Project Structure
+
+
 tomtroc/
 │
 ├── public/
-│   └── index.php
+│ └── index.php
 │
 ├── src/
-│   ├── Controller/
-│   ├── Model/
-│   └── View/
+│ ├── Controller/
+│ ├── Model/
+│ └── View/
 │
 ├── config/
-│   └── database.php
+│ └── database.php
 │
+├── database.sql
 └── README.md
-```
-## Architecture & Backend Logic
-- MVC architecture (Model / View / Controller)  
-- Server-side request handling  
-- Separation of concerns (routing, business logic, presentation)  
-- Database interaction using PDO  
+
+
 ---
 
-## Installation
+## ⚙️ Installation
 
-1. Clone the repository
+### 1. Clone repository
 
-```
-git clone https://github.com/annamarialm/ProjetOC4-tomtroc.git
-```
+git clone https://github.com/annamarialm-creator/tomtroc.git
 
-2. Place the project in your web server directory (for example `htdocs` if using XAMPP)
 
-3. Create a MySQL database named:
+### 2. Setup project
+Place it in your local server directory (e.g. `htdocs` with XAMPP)
 
-```
+### 3. Database setup
+- Create a database named:
+
 tomtroc
-```
 
-4. Configure your database connection in:
 
-```
+- Import:
+
+database.sql
+
+
+### 4. Configure DB connection
+Edit:
+
 config/database.php
-```
 
-5. Start Apache and MySQL with XAMPP.
 
-6. Open the project in your browser:
+### 5. Start server
+Run Apache + MySQL (XAMPP)
 
-```
+### 6. Open project
+
 http://localhost/tomtroc/public/
-```
+
 
 ---
 
-## Security
+## 🔐 Security
 
-* Passwords are hashed using `password_hash()`
-* Database access uses PDO prepared statements
+- Password hashing (`password_hash`)  
+- PDO prepared statements  
+- XSS protection with `htmlspecialchars`  
+- Data integrity with foreign keys  
 
 ---
 
-## Author
+## 👩‍💻 Author
 
-Project developed as part of a Full-Stack Development training program by Anna Maria LOWE MANOLIS.
-
+Project developed as part of a **Full-Stack Development program**  
+by **Anna Maria LOWE MANOLIS**
