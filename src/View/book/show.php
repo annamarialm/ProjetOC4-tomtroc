@@ -63,7 +63,7 @@
 
                 <div class="book-divider"></div>
 
-                <h3 class="book-section-title">DESCRIPTION</h3>
+                <h2 class="book-section-title">DESCRIPTION</h2>
 
                 <div class="book-description">
                     <?= nl2br(htmlspecialchars($book['description'])) ?>

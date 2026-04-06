@@ -58,7 +58,6 @@
                             id="title"
                             value="<?= htmlspecialchars($book['title']) ?>"
                             required
-                            aria-required="true"
                             autocomplete="off">
                     </div>
 
@@ -72,7 +71,6 @@
                             id="author"
                             value="<?= htmlspecialchars($book['author']) ?>"
                             required
-                            aria-required="true"
                             autocomplete="name">
                     </div>
 

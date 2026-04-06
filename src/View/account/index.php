@@ -34,7 +34,7 @@
                     modifier
                 </label>
 
-                <h3 class="profile-name"><?= htmlspecialchars($user['username']) ?></h3>
+                <h2 class="profile-name"><?= htmlspecialchars($user['username']) ?></h2>
 
                 <p class="member-since">
                     Membre depuis <?= getMembershipDuration($user['created_at']) ?>

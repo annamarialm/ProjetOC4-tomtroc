@@ -25,7 +25,6 @@
                         id="username" 
                         name="username" 
                         required 
-                        aria-required="true"
                         autocomplete="username"
                     >
 
@@ -35,7 +34,6 @@
                         id="email" 
                         name="email" 
                         required 
-                        aria-required="true"
                         autocomplete="email"
                     >
 
@@ -45,7 +43,6 @@
                         id="password" 
                         name="password" 
                         required 
-                        aria-required="true"
                         autocomplete="new-password"
                     >
 

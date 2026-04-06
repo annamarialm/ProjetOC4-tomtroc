@@ -24,8 +24,7 @@
                         type="email" 
                         id="email" 
                         name="email" 
-                        required 
-                        aria-required="true"
+                        required
                         autocomplete="email"
                     >
 
@@ -35,7 +34,6 @@
                         id="password" 
                         name="password" 
                         required 
-                        aria-required="true"
                         autocomplete="current-password"
                     >
 

@@ -51,7 +51,6 @@
                             name="title"
                             id="title"
                             required
-                            aria-required="true"
                             autocomplete="off">
                     </div>
 
@@ -64,7 +63,6 @@
                             name="author"
                             id="author"
                             required
-                            aria-required="true"
                             autocomplete="name">
                     </div>
 
